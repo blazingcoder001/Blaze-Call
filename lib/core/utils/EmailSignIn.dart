@@ -1,6 +1,8 @@
 
 
 import 'package:blaze_call/core/app_export.dart';
+import 'package:blaze_call/presentation/DisplayMessages/AccountDoesNotExistEmail.dart';
+import 'package:blaze_call/presentation/DisplayMessages/AccountExistsEmail.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -12,17 +14,13 @@ Future<int>emailSignIn(String email, String password) async {
     UserCredential userCredential = await auth.signInWithEmailAndPassword(
         email: email, password: password);
     // Check if the user's email is verified
+    AccountExistsEmail accountExistsEmail=AccountExistsEmail();
+    accountExistsEmail.display();
     return 1;
   } on FirebaseAuthException catch (e) {
     // Handle authentication exceptions and notify the user
-    if (Get.context!.mounted) {
-      ScaffoldMessenger.of(Get.context!).showSnackBar(
-        const SnackBar(
-          content: Text('User does not exist! Signup or Login with other methods to continue.'),
-          duration: Duration(seconds: 3),
-        ),
-      );
-    }
+    AccountDoesNotExistEmail accountDoesNotExistEmail=AccountDoesNotExistEmail();
+    accountDoesNotExistEmail.display();
     return 0;
   }
 }

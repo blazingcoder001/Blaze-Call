@@ -1,6 +1,6 @@
 import 'package:blaze_call/core/app_export.dart';
 import 'package:flutter/material.dart';
-import '../../backend/authorization.dart';
+import '../../core/utils/authorization.dart';
 class AccountExistsEmail{
   void display(){
     if (!user!.emailVerified) {
