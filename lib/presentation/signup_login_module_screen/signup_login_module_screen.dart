@@ -1,4 +1,7 @@
 import 'package:blaze_call/core/utils/EmailSignIn.dart';
+import 'package:blaze_call/core/utils/signup.dart';
+import 'package:blaze_call/presentation/sign_up_screen/sign_up_screen.dart';
+import 'package:flutter/gestures.dart';
 
 import 'controller/signup_login_module_controller.dart';
 import 'package:blaze_call/core/app_export.dart';
@@ -16,7 +19,7 @@ import 'package:blaze_call/domain/facebookauth/facebook_auth_helper.dart';
 // ignore_for_file: must_be_immutable
 class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  int check=0;
+  int check = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +65,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                               validator: (value) {
                                 if (value == null ||
                                     (!isValidEmail(value, isRequired: true))) {
-                                  check=1;
+                                  check = 1;
                                   return "Please enter valid email";
                                 }
                                 return null;
@@ -99,7 +102,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                 if (value == null ||
                                     (!isValidPassword(value,
                                         isRequired: true))) {
-                                  check=1;
+                                  check = 1;
                                   // print("lklkklk");
                                   return "Please enter valid password";
                                 }
@@ -129,20 +132,21 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                                 .txtGilroyMedium14BlueA700))
                                   ])),
                           CustomButton(
-                              height: getVerticalSize(50),
-                              text: "lbl_sign_in".tr,
-                              margin: getMargin(left: 1, top: 25),
-                              padding: ButtonPadding.PaddingAll14,
-                              fontStyle: ButtonFontStyle.GilroyMedium16,
-                              onTap: (){
-                                _formKey.currentState!.validate();
-                                if(check==0) {
-                                  emailSignIn(
-                                      controller.group10198Controller.text,
-                                      controller.group10198OneController.text);
-                                }
-                                check=0;
-                              },),
+                            height: getVerticalSize(50),
+                            text: "lbl_sign_in".tr,
+                            margin: getMargin(left: 1, top: 25),
+                            padding: ButtonPadding.PaddingAll14,
+                            fontStyle: ButtonFontStyle.GilroyMedium16,
+                            onTap: () {
+                              _formKey.currentState!.validate();
+                              if (check == 0) {
+                                emailSignIn(
+                                    controller.group10198Controller.text,
+                                    controller.group10198OneController.text);
+                              }
+                              check = 0;
+                            },
+                          ),
                           Padding(
                               padding: getPadding(left: 1, top: 26, right: 1),
                               child: Row(
@@ -250,7 +254,13 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                                 fontFamily: 'Gilroy',
                                                 fontWeight: FontWeight.w700,
                                                 decoration:
-                                                    TextDecoration.underline))
+                                                    TextDecoration.underline),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap=(){
+                                              Get.toNamed(AppRoutes.signUpScreen);
+                                              },
+                                        ),
+
                                       ]),
                                       textAlign: TextAlign.left)))
                         ])))));
