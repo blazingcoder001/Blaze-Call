@@ -100,14 +100,14 @@ class SignUpScreen extends GetWidget<SignUpController> {
                               }),
                           Padding(
                               padding: getPadding(top: 18),
-                              child: Text("lbl_mobile_number".tr,
+                              child: Text("lbl_username".tr,
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.left,
                                   style: AppStyle.txtGilroyMedium16)),
                           CustomTextFormField(
                               focusNode: FocusNode(),
                               controller: controller.group10198ThreeController,
-                              hintText: "msg_enter_mobile_number".tr,
+                              hintText: "lbl_enter_username".tr,
                               margin: getMargin(top: 8),
                               textInputType: TextInputType.phone,
                               validator: (value) {

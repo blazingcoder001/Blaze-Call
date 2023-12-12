@@ -1,8 +1,5 @@
 import 'package:blaze_call/core/utils/EmailSignIn.dart';
-import 'package:blaze_call/core/utils/signup.dart';
-import 'package:blaze_call/presentation/sign_up_screen/sign_up_screen.dart';
 import 'package:flutter/gestures.dart';
-
 import 'controller/signup_login_module_controller.dart';
 import 'package:blaze_call/core/app_export.dart';
 import 'package:blaze_call/core/utils/validation_functions.dart';

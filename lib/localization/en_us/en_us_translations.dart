@@ -58,6 +58,8 @@ final Map<String, String> enUs = {
   "lbl_language": "Language",
   "msg_05_mutual_friends": "05 Mutual friends",
   "lbl_enter_password": "Enter Password",
+  "lbl_username":"Username",
+  "lbl_enter_username": "Enter Username",
   "lbl_add_firend": "Add Firend",
   "lbl_angelyn_weiner": "Angelyn Weiner",
   "msg_image_management": "Image Management",
