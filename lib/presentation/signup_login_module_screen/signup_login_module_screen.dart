@@ -56,7 +56,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                           CustomTextFormField(
                               focusNode: FocusNode(),
                               controller: controller.group10198Controller,
-                              hintText: "msg_enter_your_email".tr,
+                              hintText: "msg_enter_your_email_or_username".tr,
                               margin: getMargin(left: 1, top: 8),
                               textInputType: TextInputType.emailAddress,
                               validator: (value) {

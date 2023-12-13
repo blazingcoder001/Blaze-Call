@@ -67,7 +67,7 @@ final Map<String, String> enUs = {
   "lbl_benito_nickel": "Benito Nickel",
   "msg_or_continue_with": "Or continue with",
   "msg_sign_in_with_google": "Sign in with Google",
-  "msg_enter_your_email": "Enter Your Email",
+  "msg_enter_your_email_or_username": "Enter Your Email Or Username",
   "lbl_enter_last_name": "Enter Last Name",
   "msg_kai_posted_a_new": "Kai Posted a new video “Video Name”. 5w",
   "lbl_new_user": "new user",

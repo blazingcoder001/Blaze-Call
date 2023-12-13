@@ -1,3 +1,5 @@
+import 'package:blaze_call/core/utils/signup.dart';
+
 import 'controller/sign_up_controller.dart';
 import 'package:blaze_call/core/app_export.dart';
 import 'package:blaze_call/core/utils/validation_functions.dart';
@@ -11,7 +13,7 @@ import 'package:flutter/material.dart';
 // ignore_for_file: must_be_immutable
 class SignUpScreen extends GetWidget<SignUpController> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  late int signUpResult;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -158,8 +160,22 @@ class SignUpScreen extends GetWidget<SignUpController> {
                               text: "lbl_create_account".tr,
                               margin: getMargin(top: 24, bottom: 5),
                               padding: ButtonPadding.PaddingAll14,
-                              fontStyle: ButtonFontStyle.GilroyMedium16)
-                        ])))));
+                              fontStyle: ButtonFontStyle.GilroyMedium16,
+                          onTap: () async {
+                            signUpResult = await emailSignup(
+                                controller.group10198Controller.text,
+                                controller.group10198OneController.text,
+                                controller.group10198TwoController.text,
+                                controller.group10198ThreeController.text,
+                                controller.group10198FourController.text);
+                          }
+                              )
+                        ]
+                    )
+                )
+            )
+        )
+    );
   }
 
   onTapArrowleft9() {
