@@ -1,4 +1,7 @@
-import 'package:blaze_call/core/utils/signup.dart';
+import 'package:blaze_call/core/utils/CreateAccountEmail.dart';
+import 'package:blaze_call/core/utils/CheckUserName.dart';
+import 'package:blaze_call/core/utils/SaveUserName.dart';
+import 'package:blaze_call/core/utils/emailSignup.dart';
 
 import 'controller/sign_up_controller.dart';
 import 'package:blaze_call/core/app_export.dart';
@@ -14,6 +17,10 @@ import 'package:flutter/material.dart';
 class SignUpScreen extends GetWidget<SignUpController> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late int signUpResult;
+  late int usernameCheck;
+  late int createAccount;
+  late int usernameSave;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -162,12 +169,42 @@ class SignUpScreen extends GetWidget<SignUpController> {
                               padding: ButtonPadding.PaddingAll14,
                               fontStyle: ButtonFontStyle.GilroyMedium16,
                           onTap: () async {
-                            signUpResult = await emailSignup(
-                                controller.group10198Controller.text,
-                                controller.group10198OneController.text,
-                                controller.group10198TwoController.text,
-                                controller.group10198ThreeController.text,
-                                controller.group10198FourController.text);
+                                print("controller3 value:"+controller.group10198ThreeController.text);
+                            usernameCheck = (
+                                await checkUserName(
+                                controller.group10198ThreeController.text))!;
+                            print("value of usernamecheck:"+usernameCheck.toString());
+                                if(usernameCheck==1) {
+                                  createAccount= await createAccountEmail(controller.group10198TwoController.text, controller.group10198FourController.text);
+                                  print("Value of create Account:"+createAccount.toString());
+                                  if (createAccount == 1) {
+
+                                    signUpResult = await emailSignup(
+                                        controller.group10198Controller.text,
+                                        controller.group10198OneController.text,
+                                        controller.group10198TwoController.text,
+                                        controller.group10198ThreeController
+                                            .text
+                                    );
+                                    usernameSave= (await saveUserName(controller.group10198ThreeController.text, "email"))!;
+                                    if(usernameSave==1){
+                                      print("Username saved successfully!");
+                                    }
+                                    else if (usernameSave==0){
+                                      print("Some Error Occurred");
+                                    }
+
+                                  }
+                                  else if(createAccount==0) {
+                                    print("Account already exists for this email.");
+                                  }
+                                }
+                                else if (usernameCheck==0) {
+                                  print("Username already taken! Please try another one.");
+                                }
+                                else if(usernameCheck==2){
+                                  print("Some error occurred!");
+                                }
                           }
                               )
                         ]

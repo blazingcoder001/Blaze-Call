@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import 'authorization.dart';
 
-Future<int> emailSignup(String firstName, String lastName, String email, String username, String password) async {
+Future<int> emailSignup(String firstName, String lastName, String email, String username) async {
   // Retrieve user information from Firestore
   await FirebaseFirestore.instance
       .collection('users')
@@ -19,10 +19,11 @@ Future<int> emailSignup(String firstName, String lastName, String email, String 
       }
 
       // Create a new document for the user in Firestore
-      FirebaseFirestore.instance
+     await FirebaseFirestore.instance
           .collection('users')
           .doc(uid)
-          .set({'First Name': firstName, 'Last Name':lastName, 'email': email, 'signInMethod':'email','Username': username, 'Password': password}, SetOptions(merge: true)).then(
+          .set({'First Name': firstName, 'Last Name':lastName, 'email': email, 'signInMethod':'email','Username': username}, SetOptions(merge: true))
+         .then(
               (value) {
             // Debugging: Print when the document is created successfully
             if (kDebugMode) {
