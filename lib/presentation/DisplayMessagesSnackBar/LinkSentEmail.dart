@@ -1,11 +1,12 @@
 import 'package:blaze_call/core/app_export.dart';
 import 'package:flutter/material.dart';
 import '../../core/utils/authorization.dart';
-class AccountExistsEmail{
+class LinkSentEmail{
+  Authorization authorization=Authorization();
   void display(){
-    if (!user!.emailVerified) {
+    if (!authorization.user!.emailVerified) {
       // Send email verification and notify the user
-      user?.sendEmailVerification();
+      authorization.user?.sendEmailVerification();
       if (Get.context!.mounted) {
         ScaffoldMessenger.of(Get.context!).showSnackBar(
           const SnackBar(

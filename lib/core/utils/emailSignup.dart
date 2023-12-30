@@ -3,11 +3,13 @@ import 'package:flutter/foundation.dart';
 
 import 'authorization.dart';
 
-Future<int> emailSignup(String firstName, String lastName, String email, String username) async {
+Future<int?> emailSignup(String firstName, String lastName, String email, String username) async {
   // Retrieve user information from Firestore
-  await FirebaseFirestore.instance
+  int? result;
+  Authorization authorization =Authorization();
+  result= await FirebaseFirestore.instance
       .collection('users')
-      .doc(uid)
+      .doc(authorization.uid)
       .get()
       .then((docSnapshot) async {
 
@@ -17,11 +19,12 @@ Future<int> emailSignup(String firstName, String lastName, String email, String 
       if (kDebugMode) {
         print('User does not exist from emailSignup');
       }
+      int result2;
 
       // Create a new document for the user in Firestore
-     await FirebaseFirestore.instance
+     result2=await FirebaseFirestore.instance
           .collection('users')
-          .doc(uid)
+          .doc(authorization.uid)
           .set({'First Name': firstName, 'Last Name':lastName, 'email': email, 'signInMethod':'email','Username': username}, SetOptions(merge: true))
          .then(
               (value) {
@@ -37,8 +40,13 @@ Future<int> emailSignup(String firstName, String lastName, String email, String 
         }
         return 0;
       });
+     return result2;
+    }
+    else{
+      print("User Exists for this uid."+ authorization.uid.toString());
     }
   });
-  return 2;
+  return result;
+  // return 2;
 
 }

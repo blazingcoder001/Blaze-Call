@@ -1,1 +1,2 @@
--> Day 2 to do: Need to add methods to login button in homepage.
+errors:-
+Null check error while saving data to firestore of signUpResult.

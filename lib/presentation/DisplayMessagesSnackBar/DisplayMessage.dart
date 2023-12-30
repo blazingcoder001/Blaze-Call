@@ -1,16 +1,15 @@
 import 'package:blaze_call/core/app_export.dart';
 import 'package:flutter/material.dart';
 
-class AccountDoesNotExistEmail{
-  void display(){
+class DisplayMessage{
+  void display(String message){
     if (Get.context!.mounted) {
       ScaffoldMessenger.of(Get.context!).showSnackBar(
-        const SnackBar(
-          content: Text('User does not exist! Signup or Login with other methods to continue.'),
+         SnackBar(
+          content: Text(message),
           duration: Duration(seconds: 3),
         ),
       );
     }
   }
-
 }
