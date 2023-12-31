@@ -126,5 +126,6 @@ final Map<String, String> enUs = {
   "lbl_bookmark": "Bookmark",
   "lbl_remember_me": "Remember me",
   "lbl_enter_your_name": "Enter Your Name",
-  "msg_benito_liked_a_photo": "Benito liked a photo Carmelo’s post. 50 min ago"
+  "msg_benito_liked_a_photo": "Benito liked a photo Carmelo’s post. 50 min ago",
+
 };

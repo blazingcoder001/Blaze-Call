@@ -1,2 +1,3 @@
 errors:-
-Null check error while saving data to firestore of signUpResult.
+-> Remember to change code to move textfield to the top of soft keyboard to view it properly before
+typing. Do this first before doing any changes to a screen working on.
