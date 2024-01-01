@@ -203,48 +203,6 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                         int?> snapshot) {
                                                   if (snapshot.hasData) {
                                                     if (snapshot.data == 1) {
-                                                      // return FutureBuilder<
-                                                      //     int?>(
-                                                      //   future: saveUserName(
-                                                      //       controller
-                                                      //           .group10198ThreeController
-                                                      //           .text, "email"),
-                                                      //   builder: (
-                                                      //       BuildContext context,
-                                                      //       AsyncSnapshot<
-                                                      //           int?> snapshot) {
-                                                      //     if (snapshot
-                                                      //         .hasData) {
-                                                      //       if (snapshot.data ==
-                                                      //           1) {
-                                                      //         displaymessage
-                                                      //             .display(
-                                                      //             "Username saved successfully!");
-                                                      //         // return Text(
-                                                      //         //     "Username saved successfully");
-                                                      //         return Container();
-                                                      //       }
-                                                      //       else
-                                                      //       if (snapshot.data ==
-                                                      //           0) {
-                                                      //         displaymessage
-                                                      //             .display(
-                                                      //             "Some Error Occurred");
-                                                      //         removeAccount();
-                                                      //         // return Text(
-                                                      //         //     "Some Error Occurred");
-                                                      //         return Container();
-                                                      //
-                                                      //       }
-                                                      //     } else if (snapshot
-                                                      //         .hasError) {
-                                                      //       return Text(
-                                                      //           '${snapshot
-                                                      //               .error}');
-                                                      //     }
-                                                      //     return const CircularProgressIndicator();
-                                                      //   },
-                                                      // );
                                                       return FutureBuilder<int?>(
                                                         future: emailSignup(
                                                                   controller.group10198Controller.text,
@@ -275,7 +233,9 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                                       "Username saved successfully!");
                                                                   // return Text(
                                                                   //     "Username saved successfully");
-                                                                  return Container();
+                                                                  return Container();//Empty container is returned that doesn't affect
+                                                                                    //the UI apart from a pale black color that goes when tapped once
+                                                                                    //on the screen.
                                                                 }
                                                                 else
                                                                 if (snapshot.data ==
@@ -295,7 +255,10 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                                     '${snapshot
                                                                         .error}');
                                                               }
-                                                              return const CircularProgressIndicator();
+                                                              // return const CircularProgressIndicator();
+                                                              return Center(
+                                                                child: CircularProgressIndicator(),
+                                                              );
                                                             },
                                                           );
                                                             }
@@ -306,7 +269,10 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                                     .error}');
 
                                                           }
-                                                          return const CircularProgressIndicator();
+                                                          // return const CircularProgressIndicator();
+                                                          return Center(
+                                                            child: CircularProgressIndicator(),
+                                                          );
                                                         },
                                                       );
 
@@ -325,7 +291,10 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                     return Text(
                                                         '${snapshot.error}');
                                                   }
-                                                  return const CircularProgressIndicator();
+                                                  // return const CircularProgressIndicator();
+                                                  return Center(
+                                                    child: CircularProgressIndicator(),
+                                                  );
                                                 },
                                               );
                                             }
@@ -348,57 +317,15 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                           } else if (snapshot.hasError) {
                                             return Text('${snapshot.error}');
                                           }
-                                          return const CircularProgressIndicator();
+                                          // return const CircularProgressIndicator();
+                                          return Center(
+                                            child: CircularProgressIndicator(),
+                                          );
                                         },
                                       );
                                     }
                                   );
-                              // print("value of usernamecheck:"+usernameCheck.toString());
-                                  // if(usernameCheck==1) {
-                                  //   createAccount= await createAccountEmail(controller.group10198TwoController.text, controller.group10198FourController.text);
-                                  //   print("Value of create Account:"+createAccount.toString());
-                                  //   if (createAccount == 1) {
-                                  //
-                                  //
-                                  //     signUpResult = (await emailSignup(
-                                  //         controller.group10198Controller.text,
-                                  //         controller.group10198OneController.text,
-                                  //         controller.group10198TwoController.text,
-                                  //         controller.group10198ThreeController
-                                  //             .text
-                                  //     ))!;
-                                  //     if(signUpResult==1) {
-                                  //       usernameSave = (await saveUserName(
-                                  //           controller.group10198ThreeController
-                                  //               .text, "email"));
-                                  //       if (usernameSave == 1) {
-                                  //         // print("Username saved successfully!");
-                                  //         displaymessage.display(
-                                  //             "Username saved successfully!");
-                                  //       }
-                                  //       else if (usernameSave == 0) {
-                                  //         displaymessage.display(
-                                  //             "Some Error Occurred");
-                                  //         removeAccount();
-                                  //         // print("Some Error Occurred");
-                                  //       }
-                                  //     }
-                                  //
-                                  //   }
-                                  //   else if(createAccount==0) {
-                                  //     displaymessage.display("Account already exists for this email.");
-                                  //     // print("Account already exists for this email.");
-                                  //   }
-                                  // }
-                                  // else if (usernameCheck==0) {
-                                  //   // print("Username already taken! Please try another one.");
-                                  //   displaymessage.display("Username already taken! Please try another one.");
-                                  //
-                                  // }
-                                  // else if(usernameCheck==2){
-                                  //   displaymessage.display("Some error occurred!");
-                                  //   // print("Some error occurred!");
-                                  // }
+
                             }
                                 )
                           ]

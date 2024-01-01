@@ -12,6 +12,7 @@ import 'package:blaze_call/presentation/add_friends_screen/add_friends_screen.da
 import 'package:blaze_call/presentation/add_friends_screen/binding/add_friends_binding.dart';
 import 'package:blaze_call/presentation/preview_video_screen/preview_video_screen.dart';
 import 'package:blaze_call/presentation/preview_video_screen/binding/preview_video_binding.dart';
+import 'package:blaze_call/presentation/verification_email/verification_email.dart';
 import 'package:blaze_call/presentation/video_call_screen/video_call_screen.dart';
 import 'package:blaze_call/presentation/video_call_screen/binding/video_call_binding.dart';
 import 'package:blaze_call/presentation/forgot_password_screen/forgot_password_screen.dart';
@@ -66,6 +67,9 @@ class AppRoutes {
   static const String appNavigationScreen = '/app_navigation_screen';
 
   static const String initialRoute = '/initialRoute';
+
+  static const String emailVerification = '/emailVerification';
+
 
   static List<GetPage> pages = [
     GetPage(
@@ -186,6 +190,10 @@ class AppRoutes {
       bindings: [
         SignupLoginModuleBinding(),
       ],
-    )
+    ),
+    GetPage(
+      name: emailVerification,
+      page: () => VerificationEmail(),
+    ),
   ];
 }

@@ -127,5 +127,7 @@ final Map<String, String> enUs = {
   "lbl_remember_me": "Remember me",
   "lbl_enter_your_name": "Enter Your Name",
   "msg_benito_liked_a_photo": "Benito liked a photo Carmelo’s post. 50 min ago",
+  "msg_verification_email":"A link has been sent to your email address. Please verify to continue.",
+  "lbl_verification_email":"Verification Email"
 
 };
