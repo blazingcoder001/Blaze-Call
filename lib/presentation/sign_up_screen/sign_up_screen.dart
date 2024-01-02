@@ -3,6 +3,7 @@ import 'package:blaze_call/core/utils/CheckUserName.dart';
 import 'package:blaze_call/core/utils/RemoveAccount.dart';
 import 'package:blaze_call/core/utils/SaveUserName.dart';
 import 'package:blaze_call/core/utils/emailSignup.dart';
+import 'package:blaze_call/core/utils/verification_email_backend.dart';
 
 import 'package:blaze_call/presentation/DisplayMessagesSnackBar/DisplayMessage.dart';
 
@@ -179,7 +180,8 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                   // usernameCheck = (
                               //     await checkUserName(
                               //     controller.group10198ThreeController.text))!;
-                                  showDialog(
+                                  showDialog(//used to call future inside onTap:() as future builder needs to be called
+                                              // in the build context.
                                     context: Get.context!,
                                     builder:(BuildContext context) {
                                       return FutureBuilder<int?>(
@@ -203,78 +205,96 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                         int?> snapshot) {
                                                   if (snapshot.hasData) {
                                                     if (snapshot.data == 1) {
-                                                      return FutureBuilder<int?>(
-                                                        future: emailSignup(
-                                                                  controller.group10198Controller.text,
-                                                                  controller.group10198OneController.text,
-                                                                  controller.group10198TwoController.text,
-                                                                  controller.group10198ThreeController
-                                                                      .text
-                                                              ),
-                                                        builder: (BuildContext context, AsyncSnapshot<int?> snapshot) {
-                                                          if (snapshot.hasData) {
-                                                            if(snapshot.data==1){
-                                                              return FutureBuilder<
-                                                              int?>(
-                                                            future: saveUserName(
-                                                                controller
-                                                                    .group10198ThreeController
-                                                                    .text, "email"),
-                                                            builder: (
-                                                                BuildContext context,
-                                                                AsyncSnapshot<
-                                                                    int?> snapshot) {
-                                                              if (snapshot
-                                                                  .hasData) {
-                                                                if (snapshot.data ==
-                                                                    1) {
-                                                                  displaymessage
-                                                                      .display(
-                                                                      "Username saved successfully!");
-                                                                  // return Text(
-                                                                  //     "Username saved successfully");
-                                                                  return Container();//Empty container is returned that doesn't affect
-                                                                                    //the UI apart from a pale black color that goes when tapped once
-                                                                                    //on the screen.
-                                                                }
-                                                                else
-                                                                if (snapshot.data ==
-                                                                    0) {
-                                                                  displaymessage
-                                                                      .display(
-                                                                      "Some Error Occurred");
-                                                                  removeAccount();
-                                                                  // return Text(
-                                                                  //     "Some Error Occurred");
-                                                                  return Container();
-
-                                                                }
-                                                              } else if (snapshot
-                                                                  .hasError) {
-                                                                return Text(
-                                                                    '${snapshot
-                                                                        .error}');
-                                                              }
-                                                              // return const CircularProgressIndicator();
-                                                              return Center(
-                                                                child: CircularProgressIndicator(),
-                                                              );
-                                                            },
-                                                          );
-                                                            }
-                                                          }
-                                                          else if(snapshot.hasError){
-                                                            return Text(
-                                                                '${snapshot
-                                                                    .error}');
-
-                                                          }
-                                                          // return const CircularProgressIndicator();
-                                                          return Center(
-                                                            child: CircularProgressIndicator(),
-                                                          );
-                                                        },
-                                                      );
+                                                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                                                        // Do something after the build phase is complete
+                                                        // For example, call setState()
+                                                        Get.toNamed(AppRoutes.emailVerification,
+                                                          arguments: [controller.group10198Controller.text,
+                                                            controller.group10198OneController.text,
+                                                            controller.group10198TwoController.text,
+                                                            controller.group10198ThreeController
+                                                                .text,],
+                                                        );
+                                                      });
+                                                      // Get.toNamed(AppRoutes.emailVerification,
+                                                      //   arguments: [controller.group10198Controller.text,
+                                                      //               controller.group10198OneController.text,
+                                                      //               controller.group10198TwoController.text,
+                                                      //               controller.group10198ThreeController
+                                                      //                   .text,],
+                                                      // );
+                                                      // return FutureBuilder<int?>(
+                                                      //   future: emailSignup(
+                                                      //             controller.group10198Controller.text,
+                                                      //             controller.group10198OneController.text,
+                                                      //             controller.group10198TwoController.text,
+                                                      //             controller.group10198ThreeController
+                                                      //                 .text
+                                                      //         ),
+                                                      //   builder: (BuildContext context, AsyncSnapshot<int?> snapshot) {
+                                                      //     if (snapshot.hasData) {
+                                                      //       if(snapshot.data==1){
+                                                      //         return FutureBuilder<
+                                                      //         int?>(
+                                                      //       future: saveUserName(
+                                                      //           controller
+                                                      //               .group10198ThreeController
+                                                      //               .text, "email"),
+                                                      //       builder: (
+                                                      //           BuildContext context,
+                                                      //           AsyncSnapshot<
+                                                      //               int?> snapshot) {
+                                                      //         if (snapshot
+                                                      //             .hasData) {
+                                                      //           if (snapshot.data ==
+                                                      //               1) {
+                                                      //             displaymessage
+                                                      //                 .display(
+                                                      //                 "Username saved successfully!");
+                                                      //             // return Text(
+                                                      //             //     "Username saved successfully");
+                                                      //             return Container();//Empty container is returned that doesn't affect
+                                                      //                               //the UI apart from a pale black color that goes when tapped once
+                                                      //                               //on the screen.
+                                                      //           }
+                                                      //           else
+                                                      //           if (snapshot.data ==
+                                                      //               0) {
+                                                      //             displaymessage
+                                                      //                 .display(
+                                                      //                 "Some Error Occurred");
+                                                      //             removeAccount();
+                                                      //             // return Text(
+                                                      //             //     "Some Error Occurred");
+                                                      //             return Container();
+                                                      //
+                                                      //           }
+                                                      //         } else if (snapshot
+                                                      //             .hasError) {
+                                                      //           return Text(
+                                                      //               '${snapshot
+                                                      //                   .error}');
+                                                      //         }
+                                                      //         // return const CircularProgressIndicator();
+                                                      //         return Center(
+                                                      //           child: CircularProgressIndicator(),
+                                                      //         );
+                                                      //       },
+                                                      //     );
+                                                      //       }
+                                                      //     }
+                                                      //     else if(snapshot.hasError){
+                                                      //       return Text(
+                                                      //           '${snapshot
+                                                      //               .error}');
+                                                      //
+                                                      //     }
+                                                      //     // return const CircularProgressIndicator();
+                                                      //     return Center(
+                                                      //       child: CircularProgressIndicator(),
+                                                      //     );
+                                                      //   },
+                                                      // );
 
                                                     }
                                                     else
