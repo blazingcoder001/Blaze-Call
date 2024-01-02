@@ -20,122 +20,93 @@ class VerificationEmail extends StatelessWidget {
   List<String> args= Get.arguments;
   @override
   Widget build(BuildContext context) {
-    result= verificationEmailBackend();
     DisplayMessage displayMessage=DisplayMessage();
-    // return FutureBuilder<int?>(
-    //     future: verificationEmailBackend(),
-    //     builder: (BuildContext context,
-    //         AsyncSnapshot<int?> snapshot){
-        // return SafeArea(
-        // child: Scaffold(
-        // resizeToAvoidBottomInset: false,
-        // backgroundColor: ColorConstant.gray50,
-        // appBar: CustomAppBar(
-        //     height: getVerticalSize(53),
-        //     leadingWidth: 40,
-        //     leading: AppbarImage(
-        //         height: getSize(24),
-        //         width: getSize(24),
-        //         svgPath: ImageConstant.imgArrowleft,
-        //         margin: getMargin(left: 16, top: 12, bottom: 17),
-        //         onTap: () {
-        //           onTapArrowleft5();
-        //         }),
-        //     centerTitle: true,
-        //     title: AppbarTitle(text: "lbl_verification_email".tr)),
-        // body: Form(
-        //     key: _formKey,
-        //     child: Container(
-        //         width: double.maxFinite,
-        //         padding: getPadding(left: 16, top: 119, right: 16),
-        //         child: Column(
-        //             crossAxisAlignment: CrossAxisAlignment.start,
-        //             mainAxisAlignment: MainAxisAlignment.start,
-        //             children: [
-        //               CustomImageView(
-        //                   svgPath: ImageConstant.imgLock,
-        //                   height: getVerticalSize(100),
-        //                   width: getHorizontalSize(93),
-        //                   alignment: Alignment.center),
-        //               Container(
-        //                   width: getHorizontalSize(378),
-        //                   margin: getMargin(left: 8, top: 36, right: 8),
-        //                   child: Text("msg_verification_email".tr,
-        //                       maxLines: null,
-        //                       textAlign: TextAlign.center,
-        //                       style:
-        //                       AppStyle.txtGilroyMedium16Bluegray400)),
-        //             ])))));
-  // });
-    if(result==1) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       showDialog(
           context: context,
           builder: (BuildContext context) {
-            return FutureBuilder<int?>(
-              future: emailSignup(
-                  args[0], args[1], args[2], args[3]
-              ),
-              builder: (BuildContext context, AsyncSnapshot<int?> snapshot) {
-                if (snapshot.hasData) {
-                  if (snapshot.data == 1) {
-                    return FutureBuilder<
-                        int?>(
-                      future: saveUserName(
-                          args[3], "email"),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<
-                              int?> snapshot) {
-                        if (snapshot
-                            .hasData) {
-                          if (snapshot.data ==
-                              1) {
-                            displayMessage
-                                .display(
-                                "Username saved successfully!");
-                            // return Text(
-                            //     "Username saved successfully");
-                            return Container(); //Empty container is returned that doesn't affect
-                            //the UI apart from a pale black color that goes when tapped once
-                            //on the screen.
+            return FutureBuilder<int?>(future: verificationEmailBackend(),
+                builder: (BuildContext context, AsyncSnapshot<int?> snapshot){
+                  if(snapshot.hasData){
+                    if(snapshot.data==1){
+                      return FutureBuilder<int?>(
+                        future: emailSignup(
+                            args[0], args[1], args[2], args[3]
+                        ),
+                        builder: (BuildContext context, AsyncSnapshot<int?> snapshot) {
+                          if (snapshot.hasData) {
+                            if (snapshot.data == 1) {
+                              return FutureBuilder<
+                                  int?>(
+                                future: saveUserName(
+                                    args[3], "email"),
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<
+                                        int?> snapshot) {
+                                  if (snapshot
+                                      .hasData) {
+                                    if (snapshot.data ==
+                                        1) {
+                                      displayMessage
+                                          .display(
+                                          "Username saved successfully!");
+                                      // return Text(
+                                      //     "Username saved successfully");
+                                      return Container(); //Empty container is returned that doesn't affect
+                                      //the UI apart from a pale black color that goes when tapped once
+                                      //on the screen.
+                                    }
+                                    else if (snapshot.data ==
+                                        0) {
+                                      displayMessage
+                                          .display(
+                                          "Some Error Occurred");
+                                      removeAccount();
+                                      // return Text(
+                                      //     "Some Error Occurred");
+                                      return Container();
+                                    }
+                                  } else if (snapshot
+                                      .hasError) {
+                                    return Text(
+                                        '${snapshot
+                                            .error}');
+                                  }
+                                  // return const CircularProgressIndicator();
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                },
+                              );
+                            }
+
                           }
-                          else if (snapshot.data ==
-                              0) {
-                            displayMessage
-                                .display(
-                                "Some Error Occurred");
-                            removeAccount();
-                            // return Text(
-                            //     "Some Error Occurred");
-                            return Container();
+                          else if (snapshot.hasError) {
+                            return Text(
+                                '${snapshot
+                                    .error}');
                           }
-                        } else if (snapshot
-                            .hasError) {
-                          return Text(
-                              '${snapshot
-                                  .error}');
-                        }
-                        // return const CircularProgressIndicator();
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      },
-                    );
+                          // return const CircularProgressIndicator();
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                      );
+                    }
                   }
-                }
-                else if (snapshot.hasError) {
-                  return Text(
-                      '${snapshot
-                          .error}');
-                }
-                // return const CircularProgressIndicator();
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-            );
+                  else if(snapshot.hasError){
+                    return Text(
+                        '${snapshot
+                            .error}');
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                });
+
           }
       );
-    }
+    });
 
     return SafeArea(
         child: Scaffold(
