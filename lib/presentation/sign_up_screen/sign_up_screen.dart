@@ -183,6 +183,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                   showDialog(//used to call future inside onTap:() as future builder needs to be called
                                               // in the build context.
                                     context: Get.context!,
+                                    barrierColor:null,
                                     builder:(BuildContext context) {
                                       return FutureBuilder<int?>(
                                         future: (checkUserName(

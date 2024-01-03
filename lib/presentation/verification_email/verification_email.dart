@@ -24,6 +24,7 @@ class VerificationEmail extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showDialog(
           context: context,
+          barrierColor: null,
           builder: (BuildContext context) {
             return FutureBuilder<int?>(future: verificationEmailBackend(),
                 builder: (BuildContext context, AsyncSnapshot<int?> snapshot){
