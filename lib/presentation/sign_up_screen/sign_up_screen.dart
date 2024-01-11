@@ -24,6 +24,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
   late int usernameCheck;
   late int createAccount;
   late int usernameSave;
+  int check = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +73,9 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                 margin: getMargin(top: 8),
                                 validator: (value) {
                                   if (!isText(value)) {
-                                    return "Please enter valid text";
+                                    return "lbl_invalid_text".tr;
                                   }
+                                  check=1;
                                   return null;
                                 }),
                             Padding(
@@ -89,8 +91,9 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                 margin: getMargin(top: 7),
                                 validator: (value) {
                                   if (!isText(value)) {
-                                    return "Please enter valid text";
+                                    return "lbl_invalid_text".tr;
                                   }
+                                  check=1;
                                   return null;
                                 }),
                             Padding(
@@ -108,8 +111,9 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                 validator: (value) {
                                   if (value == null ||
                                       (!isValidEmail(value, isRequired: true))) {
-                                    return "Please enter valid email";
+                                    return "lbl_invalid_email".tr;
                                   }
+                                  check=1;
                                   return null;
                                 }),
                             Padding(
@@ -124,12 +128,14 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                 hintText: "lbl_enter_username".tr,
                                 margin: getMargin(top: 8),
                                 textInputType: TextInputType.phone,
-                                validator: (value) {
-                                  if (!isValidPhone(value)) {
-                                    return "Please enter valid phone number";
-                                  }
-                                  return null;
-                                }),
+                                // validator: (value) {
+                                //   if (!isValidPhone(value)) {
+                                //     return "Please enter valid phone number";
+                                //   }
+                                //   check=1;
+                                //   return null;
+                                // }
+                                ),
                             Padding(
                                 padding: getPadding(top: 19),
                                 child: Text("lbl_password".tr,
@@ -162,8 +168,9 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                   if (value == null ||
                                       (!isValidPassword(value,
                                           isRequired: true))) {
-                                    return "Please enter valid password";
+                                    return "lbl_invalid_password".tr;
                                   }
+                                  check=1;
                                   return null;
                                 },
                                 isObscureText: controller.isShowPassword.value)),
@@ -174,17 +181,17 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                 padding: ButtonPadding.PaddingAll14,
                                 fontStyle: ButtonFontStyle.GilroyMedium16,
                             onTap: () async {
-                                  print("controller3 value:"+controller.group10198ThreeController.text);
-                                  DisplayMessage displaymessage =DisplayMessage();
+                              _formKey.currentState!.validate();
+                              if (check==0) {
+                                // print("controller3 value:" + controller
+                                //     .group10198ThreeController.text);
+                                DisplayMessage displaymessage = DisplayMessage();
 
-                                  // usernameCheck = (
-                              //     await checkUserName(
-                              //     controller.group10198ThreeController.text))!;
-                                  showDialog(//used to call future inside onTap:() as future builder needs to be called
-                                              // in the build context.
+                                showDialog( //used to call future inside onTap:() as future builder needs to be called
+                                  // in the build context.
                                     context: Get.context!,
-                                    barrierColor:null,
-                                    builder:(BuildContext context) {
+                                    barrierColor: null,
+                                    builder: (BuildContext context) {
                                       return FutureBuilder<int?>(
                                         future: (checkUserName(
                                             controller.group10198ThreeController
@@ -206,106 +213,37 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                         int?> snapshot) {
                                                   if (snapshot.hasData) {
                                                     if (snapshot.data == 1) {
-                                                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                                                      WidgetsBinding.instance
+                                                          .addPostFrameCallback((
+                                                          _) {
                                                         // Do something after the build phase is complete
                                                         // For example, call setState()
-                                                        Get.toNamed(AppRoutes.emailVerification,
-                                                          arguments: [controller.group10198Controller.text,
-                                                            controller.group10198OneController.text,
-                                                            controller.group10198TwoController.text,
-                                                            controller.group10198ThreeController
-                                                                .text,],
+                                                        Get.toNamed(AppRoutes
+                                                            .emailVerification,
+                                                          arguments: [
+                                                            controller
+                                                                .group10198Controller
+                                                                .text,
+                                                            controller
+                                                                .group10198OneController
+                                                                .text,
+                                                            controller
+                                                                .group10198TwoController
+                                                                .text,
+                                                            controller
+                                                                .group10198ThreeController
+                                                                .text,
+                                                          ],
                                                         );
                                                       });
-                                                      // Get.toNamed(AppRoutes.emailVerification,
-                                                      //   arguments: [controller.group10198Controller.text,
-                                                      //               controller.group10198OneController.text,
-                                                      //               controller.group10198TwoController.text,
-                                                      //               controller.group10198ThreeController
-                                                      //                   .text,],
-                                                      // );
-                                                      // return FutureBuilder<int?>(
-                                                      //   future: emailSignup(
-                                                      //             controller.group10198Controller.text,
-                                                      //             controller.group10198OneController.text,
-                                                      //             controller.group10198TwoController.text,
-                                                      //             controller.group10198ThreeController
-                                                      //                 .text
-                                                      //         ),
-                                                      //   builder: (BuildContext context, AsyncSnapshot<int?> snapshot) {
-                                                      //     if (snapshot.hasData) {
-                                                      //       if(snapshot.data==1){
-                                                      //         return FutureBuilder<
-                                                      //         int?>(
-                                                      //       future: saveUserName(
-                                                      //           controller
-                                                      //               .group10198ThreeController
-                                                      //               .text, "email"),
-                                                      //       builder: (
-                                                      //           BuildContext context,
-                                                      //           AsyncSnapshot<
-                                                      //               int?> snapshot) {
-                                                      //         if (snapshot
-                                                      //             .hasData) {
-                                                      //           if (snapshot.data ==
-                                                      //               1) {
-                                                      //             displaymessage
-                                                      //                 .display(
-                                                      //                 "Username saved successfully!");
-                                                      //             // return Text(
-                                                      //             //     "Username saved successfully");
-                                                      //             return Container();//Empty container is returned that doesn't affect
-                                                      //                               //the UI apart from a pale black color that goes when tapped once
-                                                      //                               //on the screen.
-                                                      //           }
-                                                      //           else
-                                                      //           if (snapshot.data ==
-                                                      //               0) {
-                                                      //             displaymessage
-                                                      //                 .display(
-                                                      //                 "Some Error Occurred");
-                                                      //             removeAccount();
-                                                      //             // return Text(
-                                                      //             //     "Some Error Occurred");
-                                                      //             return Container();
-                                                      //
-                                                      //           }
-                                                      //         } else if (snapshot
-                                                      //             .hasError) {
-                                                      //           return Text(
-                                                      //               '${snapshot
-                                                      //                   .error}');
-                                                      //         }
-                                                      //         // return const CircularProgressIndicator();
-                                                      //         return Center(
-                                                      //           child: CircularProgressIndicator(),
-                                                      //         );
-                                                      //       },
-                                                      //     );
-                                                      //       }
-                                                      //     }
-                                                      //     else if(snapshot.hasError){
-                                                      //       return Text(
-                                                      //           '${snapshot
-                                                      //               .error}');
-                                                      //
-                                                      //     }
-                                                      //     // return const CircularProgressIndicator();
-                                                      //     return Center(
-                                                      //       child: CircularProgressIndicator(),
-                                                      //     );
-                                                      //   },
-                                                      // );
-
                                                     }
                                                     else
                                                     if (snapshot.data == 0) {
                                                       displaymessage.display(
-                                                          "Account already exists for this email.");
+                                                          "msg_acc_exists_email".tr);
                                                       // return Text(
                                                       //     "Account already exists for this email.");
                                                       return Container();
-
                                                     }
                                                   } else
                                                   if (snapshot.hasError) {
@@ -321,19 +259,17 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                             }
                                             else if (snapshot.data == 0) {
                                               displaymessage.display(
-                                                  "Username already taken! Please try another one.");
+                                                  "msg_username_taken".tr);
                                               // return Text(
                                               //     "Username already taken! Please try another one.");
                                               return Container();
-
                                             }
                                             else if (snapshot.data == 2) {
                                               displaymessage.display(
-                                                  "Some error occurred!");
+                                                  "msg_some_error".tr);
                                               // return Text(
                                               //     "Some error occurred!");
                                               return Container();
-
                                             }
                                           } else if (snapshot.hasError) {
                                             return Text('${snapshot.error}');
@@ -345,7 +281,8 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                         },
                                       );
                                     }
-                                  );
+                                );
+                              }
 
                             }
                                 )

@@ -128,6 +128,15 @@ final Map<String, String> enUs = {
   "lbl_enter_your_name": "Enter Your Name",
   "msg_benito_liked_a_photo": "Benito liked a photo Carmelo’s post. 50 min ago",
   "msg_verification_email":"A link has been sent to your email address. Please verify to continue.",
-  "lbl_verification_email":"Verification Email"
+  "lbl_verification_email":"Verification Email",
+  "lbl_invalid_email":"Please enter valid email",
+  "lbl_invalid_password":"Please enter valid password.Password should have:-\n->at least a upper "
+      "case letter\n->at least a lower case letter\n->at least a digit\n->at least a special "
+      "character [@#%^&+="+r"$"+"]\n->length of at least 4\n->no white space allowed",
+  "msg_snack-bar_error_1":"user data is empty'",
+  "lbl_invalid_text":"Please enter valid text",
+  "msg_acc_exists_email":"Account already exists for this email.",
+  "msg_username_taken":"Username already taken! Please try another one.",
+  "msg_some_error":"Some error occurred!",
 
 };

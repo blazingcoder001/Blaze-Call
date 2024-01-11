@@ -63,7 +63,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                   if (value == null ||
                                       (!isValidEmail(value, isRequired: true))) {
                                     check = 1;
-                                    return "Please enter valid email";
+                                    return "lbl_invalid_email".tr;
                                   }
                                   return null;
                                 }),
@@ -101,7 +101,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                           isRequired: true))) {
                                     check = 1;
                                     // print("lklkklk");
-                                    return "Please enter valid password";
+                                    return "lbl_invalid_password".tr;
                                   }
                                   return null;
                                 },
@@ -269,7 +269,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
       if (googleUser != null) {
         //TODO Actions to be performed after signin
       } else {
-        Get.snackbar('Error', 'user data is empty');
+        Get.snackbar('Error', 'msg_snack-bar_error_1'.tr);
       }
     }).catchError((onError) {
       Get.snackbar('Error', onError.toString());
