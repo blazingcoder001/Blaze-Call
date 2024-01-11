@@ -8,7 +8,6 @@ import 'package:blaze_call/widgets/app_bar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class FriendListScreen extends GetWidget<FriendListController> {
-  Rx<int> _selectedIndex=0.obs;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -70,7 +69,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                                 //             .txtGilroyMedium16BlueA700)),
                                 GestureDetector(
                                   onTap: (){
-                                    _selectedIndex.value=0;
+                                    controller.selectedIndex.value=0;
                                   },
                                     child:Obx(() => Padding(
                                         padding: getPadding(left: 12, bottom: 5),
@@ -79,7 +78,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                                             textAlign: TextAlign.left,
                                             // style: AppStyle
                                             //     .txtGilroyMedium16BlueA700
-                                          style: _selectedIndex.value == 0
+                                          style: controller.selectedIndex.value == 0
                                               ? AppStyle.txtGilroyMedium16BlueA700
                                               : AppStyle.txtGilroyMedium16Bluegray400,
                                         )
@@ -88,33 +87,33 @@ class FriendListScreen extends GetWidget<FriendListController> {
 
                                 GestureDetector(
                                   onTap: (){
-                                    _selectedIndex.value=1;
+                                    controller.selectedIndex.value=1;
                                   },
                                   child: Obx(() => Padding(
                                       padding: getPadding(top: 1, bottom: 3),
                                       child: Text("lbl_requests_pending".tr,
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.left,
-                                        style: _selectedIndex.value == 1
+                                        style: controller.selectedIndex.value == 1
                                             ? AppStyle.txtGilroyMedium16BlueA700
                                             : AppStyle.txtGilroyMedium16Bluegray400,))),
                                 ),
                                 GestureDetector(
                                   onTap: (){
-                                    _selectedIndex.value=2;
+                                    controller.selectedIndex.value=2;
                                   },
                                   child: Obx(() => Padding(
                                       padding: getPadding(top: 1, bottom: 3),
                                       child: Text("lbl_requests_sent".tr,
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.left,
-                                        style: _selectedIndex.value == 2
+                                        style: controller.selectedIndex.value == 2
                                             ? AppStyle.txtGilroyMedium16BlueA700
                                             : AppStyle.txtGilroyMedium16Bluegray400,))),
                                 )
                               ])),
                       Obx(() =>
-                      _selectedIndex.value==0?SizedBox(
+                      controller.selectedIndex.value==0?SizedBox(
                           width: getHorizontalSize(105),
                           child: Divider(
                               height: getVerticalSize(2),
@@ -122,7 +121,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                               color: ColorConstant.blueA700,
                               indent: getHorizontalSize(3))):SizedBox()),
                       Obx(() =>
-                      _selectedIndex.value==1?SizedBox(
+                      controller.selectedIndex.value==1?SizedBox(
                           width: getHorizontalSize(260),
                           child: Divider(
                               height: getVerticalSize(2),
@@ -130,7 +129,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                               color: ColorConstant.blueA700,
                               indent: getHorizontalSize(130))):SizedBox()),
                       Obx(() =>
-                      _selectedIndex.value==2?SizedBox(
+                      controller.selectedIndex.value==2?SizedBox(
                           width: getHorizontalSize(400),
                           child: Divider(
                               height: getVerticalSize(2),
@@ -158,7 +157,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                       Obx(() => Expanded(child: Stack(
                         children: [
                           Visibility(
-                            visible: _selectedIndex.value == 0,
+                            visible: controller.selectedIndex.value == 0,
                             child:
                             Padding(
                                 padding: getPadding(top: 22),
@@ -180,7 +179,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                                     })),
                           ),
                           Visibility(
-                            visible: _selectedIndex.value == 1,
+                            visible: controller.selectedIndex.value == 1,
                             child: Padding(
                               padding: getPadding(top: 21),
 
@@ -203,7 +202,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                             ),
                           ),
                           Visibility(
-                            visible: _selectedIndex.value == 2,
+                            visible: controller.selectedIndex.value == 2,
                             child: ListView(
                               // Your third content here.
                             ),

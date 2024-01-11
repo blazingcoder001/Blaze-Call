@@ -3,6 +3,7 @@ import 'package:blaze_call/presentation/friend_list_screen/models/friend_list_mo
 
 class FriendListController extends GetxController {
   Rx<FriendListModel> friendListModelObj = FriendListModel().obs;
+  Rx<int> selectedIndex=0.obs;
 
   @override
   void onReady() {
