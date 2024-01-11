@@ -12,6 +12,14 @@ class FriendListScreen extends GetWidget<FriendListController> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                // Add your onPressed code here!
+              },
+              child: Icon(Icons.add),
+              backgroundColor: ColorConstant.blueA700,
+            ),
+
             backgroundColor: ColorConstant.gray50,
             appBar: CustomAppBar(
                 height: getVerticalSize(49),
@@ -50,27 +58,27 @@ class FriendListScreen extends GetWidget<FriendListController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                    padding: getPadding(left: 12, bottom: 5),
+                                    padding: getPadding(left: 130, bottom: 5),
                                     child: Text("lbl_all_friends".tr,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle
                                             .txtGilroyMedium16BlueA700)),
-                                Padding(
-                                    padding: getPadding(top: 1, bottom: 3),
-                                    child: Text("lbl_recently_added".tr,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.left,
-                                        style: AppStyle
-                                            .txtGilroyMedium16Bluegray400))
+                                // Padding(
+                                //     padding: getPadding(top: 1, bottom: 3),
+                                //     child: Text("lbl_recently_added".tr,
+                                //         overflow: TextOverflow.ellipsis,
+                                //         textAlign: TextAlign.left,
+                                //         style: AppStyle
+                                //             .txtGilroyMedium16Bluegray400))
                               ])),
                       SizedBox(
-                          width: getHorizontalSize(139),
+                          width: getHorizontalSize(245),
                           child: Divider(
                               height: getVerticalSize(2),
                               thickness: getVerticalSize(2),
                               color: ColorConstant.blueA700,
-                              indent: getHorizontalSize(44))),
+                              indent: getHorizontalSize(155))),
                       Padding(
                           padding: getPadding(top: 22),
                           child: Obx(() => ListView.separated(
