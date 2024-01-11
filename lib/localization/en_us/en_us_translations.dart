@@ -32,6 +32,7 @@ final Map<String, String> enUs = {
   "lbl_38_5m_post": "38.5M post",
   "lbl_email_id": "Email Id",
   "lbl_requests_pending": "Requests Pending",
+  "lbl_requests_sent":"Requests Sent",
   "lbl_20_23": "20:23",
   "lbl_jacklyn_kovach": "Jacklyn Kovach",
   "lbl_enter_email_id": "Enter Email Id",
