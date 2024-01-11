@@ -31,7 +31,7 @@ final Map<String, String> enUs = {
   "lbl_dislike": "Dislike",
   "lbl_38_5m_post": "38.5M post",
   "lbl_email_id": "Email Id",
-  "lbl_recently_added": "Recently Added",
+  "lbl_requests_pending": "Requests Pending",
   "lbl_20_23": "20:23",
   "lbl_jacklyn_kovach": "Jacklyn Kovach",
   "lbl_enter_email_id": "Enter Email Id",
@@ -138,5 +138,6 @@ final Map<String, String> enUs = {
   "msg_acc_exists_email":"Account already exists for this email.",
   "msg_username_taken":"Username already taken! Please try another one.",
   "msg_some_error":"Some error occurred!",
+  "lbl_contact_list":"Contact List",
 
 };

@@ -26,14 +26,27 @@ class AddFriendsScreen extends GetWidget<AddFriendsController> {
                     }),
                 centerTitle: true,
                 title: AppbarTitle(text: "lbl_friends".tr),
-                actions: [
+                // actions: [
+                //   AppbarImage(
+                //       height: getSize(24),
+                //       width: getSize(24),
+                //       svgPath: ImageConstant.imgSearch,
+                //       margin:
+                //           getMargin(left: 16, top: 13, right: 16, bottom: 12))
+                // ]
+              actions: [
                   AppbarImage(
                       height: getSize(24),
                       width: getSize(24),
                       svgPath: ImageConstant.imgSearch,
                       margin:
-                          getMargin(left: 16, top: 13, right: 16, bottom: 12))
-                ]),
+                      getMargin(left: 16, top: 13, right: 16, bottom: 12),
+                    onTap: (){
+                      showSearch(context: context, delegate: SearchBar());
+                    },
+                  )
+              ],
+            ),
             body: Padding(
                 padding: getPadding(left: 16, top: 19, right: 16),
                 child: Obx(() => ListView.separated(
@@ -51,7 +64,46 @@ class AddFriendsScreen extends GetWidget<AddFriendsController> {
                     })))));
   }
 
+
   onTapArrowleft3() {
     Get.back();
+  }
+}
+class SearchBar extends SearchDelegate<String> {
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: const Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+        },
+      ),
+    ];
+  }
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () {
+        close(context, '');
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // Implement your search logic here.
+    return const Center(
+      child: Text('Search Results'),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // Implement your suggestion logic here.
+    return const Center(
+      child: Text('Search Suggestions'),
+    );
   }
 }

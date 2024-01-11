@@ -14,12 +14,13 @@ class FriendListScreen extends GetWidget<FriendListController> {
         child: Scaffold(
             floatingActionButton: FloatingActionButton(
               onPressed: () {
+                // Get.toNamed(AppRoutes.addFriendsScreen);
+                showSearch(context: context, delegate: SearchBar());
                 // Add your onPressed code here!
               },
               child: Icon(Icons.add),
               backgroundColor: ColorConstant.blueA700,
             ),
-
             backgroundColor: ColorConstant.gray50,
             appBar: CustomAppBar(
                 height: getVerticalSize(49),
@@ -33,15 +34,16 @@ class FriendListScreen extends GetWidget<FriendListController> {
                       onTapArrowleft1();
                     }),
                 centerTitle: true,
-                title: AppbarTitle(text: "lbl_friend_list".tr),
-                actions: [
-                  AppbarImage(
-                      height: getSize(24),
-                      width: getSize(24),
-                      svgPath: ImageConstant.imgSearch,
-                      margin:
-                          getMargin(left: 16, top: 13, right: 16, bottom: 12))
-                ]),
+                title: AppbarTitle(text: "lbl_contact_list".tr),
+                // actions: [
+                //   AppbarImage(
+                //       height: getSize(24),
+                //       width: getSize(24),
+                //       svgPath: ImageConstant.imgSearch,
+                //       margin:
+                //           getMargin(left: 16, top: 13, right: 16, bottom: 12))
+                // ]
+            ),
             body: Container(
                 width: double.maxFinite,
                 padding: getPadding(left: 16, top: 24, right: 16, bottom: 24),
@@ -58,27 +60,27 @@ class FriendListScreen extends GetWidget<FriendListController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                    padding: getPadding(left: 130, bottom: 5),
+                                    padding: getPadding(left: 12, bottom: 5),
                                     child: Text("lbl_all_friends".tr,
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.left,
                                         style: AppStyle
                                             .txtGilroyMedium16BlueA700)),
-                                // Padding(
-                                //     padding: getPadding(top: 1, bottom: 3),
-                                //     child: Text("lbl_recently_added".tr,
-                                //         overflow: TextOverflow.ellipsis,
-                                //         textAlign: TextAlign.left,
-                                //         style: AppStyle
-                                //             .txtGilroyMedium16Bluegray400))
+                                Padding(
+                                    padding: getPadding(top: 1, bottom: 3),
+                                    child: Text("lbl_requests_pending".tr,
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.left,
+                                        style: AppStyle
+                                            .txtGilroyMedium16Bluegray400))
                               ])),
                       SizedBox(
-                          width: getHorizontalSize(245),
+                          width: getHorizontalSize(139),
                           child: Divider(
                               height: getVerticalSize(2),
                               thickness: getVerticalSize(2),
                               color: ColorConstant.blueA700,
-                              indent: getHorizontalSize(155))),
+                              indent: getHorizontalSize(44))),
                       Padding(
                           padding: getPadding(top: 22),
                           child: Obx(() => ListView.separated(
@@ -102,5 +104,46 @@ class FriendListScreen extends GetWidget<FriendListController> {
 
   onTapArrowleft1() {
     Get.back();
+  }
+}
+
+class SearchBar extends SearchDelegate<String> {
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: const Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+        },
+      ),
+    ];
+  }
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_back),
+      onPressed: () async {
+        FocusManager.instance.primaryFocus?.unfocus();
+        await Future.delayed(Duration(milliseconds: 500 ));
+        close(context, '');
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // Implement your search logic here.
+    return const Center(
+      child: Text('Search Results'),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // Implement your suggestion logic here.
+    return const Center(
+      child: Text('Search Suggestions'),
+    );
   }
 }
