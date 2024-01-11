@@ -24,10 +24,10 @@ class SignUpScreen extends GetWidget<SignUpController> {
   late int usernameCheck;
   late int createAccount;
   late int usernameSave;
-  int check = 0;
 
   @override
   Widget build(BuildContext context) {
+    int check = 0;
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: true,
@@ -73,9 +73,12 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                 margin: getMargin(top: 8),
                                 validator: (value) {
                                   if (!isText(value)) {
+                                    check=1;
                                     return "lbl_invalid_text".tr;
                                   }
-                                  check=1;
+                                  else{
+                                    check=0;
+                                  }
                                   return null;
                                 }),
                             Padding(
@@ -91,9 +94,12 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                 margin: getMargin(top: 7),
                                 validator: (value) {
                                   if (!isText(value)) {
+                                    check=1;
                                     return "lbl_invalid_text".tr;
                                   }
-                                  check=1;
+                                  else{
+                                    check=0;
+                                  }
                                   return null;
                                 }),
                             Padding(
@@ -111,9 +117,12 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                 validator: (value) {
                                   if (value == null ||
                                       (!isValidEmail(value, isRequired: true))) {
+                                    check=1;
                                     return "lbl_invalid_email".tr;
                                   }
-                                  check=1;
+                                  else{
+                                    check=0;
+                                  }
                                   return null;
                                 }),
                             Padding(
@@ -168,9 +177,12 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                   if (value == null ||
                                       (!isValidPassword(value,
                                           isRequired: true))) {
+                                    check=1;
                                     return "lbl_invalid_password".tr;
                                   }
-                                  check=1;
+                                  else{
+                                    check=0;
+                                  }
                                   return null;
                                 },
                                 isObscureText: controller.isShowPassword.value)),
@@ -235,6 +247,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                                 .text,
                                                           ],
                                                         );
+
                                                       });
                                                     }
                                                     else
@@ -283,6 +296,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                     }
                                 );
                               }
+                              // check=0;
 
                             }
                                 )

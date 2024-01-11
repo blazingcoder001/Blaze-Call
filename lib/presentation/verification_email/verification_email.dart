@@ -51,6 +51,9 @@ class VerificationEmail extends StatelessWidget {
                                       displayMessage
                                           .display(
                                           "Username saved successfully!");
+                                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                                        Get.toNamed(AppRoutes.friendListScreen);
+                                      });
                                       // return Text(
                                       //     "Username saved successfully");
                                       return Container(); //Empty container is returned that doesn't affect
