@@ -32,6 +32,7 @@ class FriendListController extends GetxController {
           x.userName?.value = doc.id;
           x.firstName?.value = doc.data()['First Name'];
           x.lastName?.value = doc.data()['Last Name'];
+          x.profilePicUrl?.value=doc.data()['profilePicURL'];
           allContacts!.value.add(x);
         }
       }

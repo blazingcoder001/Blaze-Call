@@ -245,9 +245,11 @@ class SearchBar extends SearchDelegate<String> {
                 },
                 itemCount: snapshot.data!.value.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(snapshot.data!.value[index].userName!.value),
-                  );
+                  // return ListTile(
+                  //   title: Text(snapshot.data!.value[index].userName!.value),
+                  //
+                  // );
+                  return FriendlistItemWidget(snapshot.data!.value[index]);
                 },
               );
             }

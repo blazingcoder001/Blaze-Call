@@ -16,20 +16,56 @@ class FriendlistItemWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CustomImageView(
-          imagePath: ImageConstant.imgProfileimglarge50x501,
-          height: getSize(
-            50,
+        // CustomImageView(
+        //   imagePath: friendlistItemModelObj.profilePicUrl!.value,
+        //   height: getSize(
+        //     50,
+        //   ),
+        //   width: getSize(
+        //     50,
+        //   ),
+        //   radius: BorderRadius.circular(
+        //     getHorizontalSize(
+        //       25,
+        //     ),
+        //   ),
+        // ),
+        Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.black,
+              width: 0.5,
+            ),
           ),
-          width: getSize(
-            50,
-          ),
-          radius: BorderRadius.circular(
-            getHorizontalSize(
-              25,
+          child: ClipOval(
+            child: Image.network(
+              friendlistItemModelObj.profilePicUrl!.value,
+              height: getSize(50),
+              width: getSize(50),
+              fit: BoxFit.cover,
+              errorBuilder: (BuildContext context, Object exception,
+                  StackTrace? stackTrace) {
+                return Text('Failed to load image');
+              },
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                }
+                return Center(
+                  child:  CircularProgressIndicator(
+                    // value: loadingProgress.expectedTotalBytes != null
+                    //     ? loadingProgress.cumulativeBytesLoaded /
+                    //         loadingProgress.expectedTotalBytes!
+                    //     : null,
+                  ),
+                );
+              },
             ),
           ),
         ),
+
         Container(
           width: getHorizontalSize(
             112,
