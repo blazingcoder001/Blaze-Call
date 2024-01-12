@@ -140,5 +140,8 @@ final Map<String, String> enUs = {
   "msg_username_taken":"Username already taken! Please try another one.",
   "msg_some_error":"Some error occurred!",
   "lbl_contact_list":"Contact List",
+  "lbl_username_saved":"Username saved successfully!",
+  "lbl_some_error":"Some Error Occurred!",
+  "lbl_prof_pic_upload_failed":"Profile Pic Upload Failed!",
 
 };

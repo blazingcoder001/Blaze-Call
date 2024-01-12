@@ -260,8 +260,29 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                     }
                                                   } else
                                                   if (snapshot.hasError) {
-                                                    return Text(
-                                                        '${snapshot.error}');
+                                                    WidgetsBinding.instance
+                                                        .addPostFrameCallback((
+                                                        _) {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext context) {
+                                                          return AlertDialog(
+                                                            title: Text('Error'),
+                                                            content: Text('${snapshot
+                                                                .error}'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.of(context).pop();
+                                                                },
+                                                                child: Text('OK'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    });
+                                                    return Container();
                                                   }
                                                   // return const CircularProgressIndicator();
                                                   return Center(

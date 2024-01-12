@@ -2,14 +2,12 @@ import 'dart:typed_data';
 
 import 'package:blaze_call/core/app_export.dart';
 import 'package:blaze_call/core/utils/pic_upload.dart';
-import 'package:blaze_call/core/utils/validation_functions.dart';
 import 'package:blaze_call/core/utils/verification_email_backend.dart';
 import 'package:blaze_call/presentation/displayMessagesSnackBar/displayMessage.dart';
 import 'package:blaze_call/widgets/app_bar/appbar_image.dart';
 import 'package:blaze_call/widgets/app_bar/appbar_title.dart';
 import 'package:blaze_call/widgets/app_bar/custom_app_bar.dart';
-import 'package:blaze_call/widgets/custom_button.dart';
-import 'package:blaze_call/widgets/custom_text_form_field.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../core/utils/RemoveAccount.dart';
@@ -68,7 +66,7 @@ class VerificationEmail extends StatelessWidget {
                                                         1) {
                                                       displayMessage
                                                           .display(
-                                                          "Username saved successfully!");
+                                                          "lbl_username_saved".tr);
                                                       WidgetsBinding.instance
                                                           .addPostFrameCallback((
                                                           _) {
@@ -84,7 +82,7 @@ class VerificationEmail extends StatelessWidget {
                                                         0) {
                                                       displayMessage
                                                           .display(
-                                                          "Some Error Occurred");
+                                                          "lbl_some_error".tr);
                                                       removeAccount();
                                                       // return Text(
                                                       //     "Some Error Occurred");
@@ -92,9 +90,29 @@ class VerificationEmail extends StatelessWidget {
                                                     }
                                                   } else if (snapshot
                                                       .hasError) {
-                                                    return Text(
-                                                        '${snapshot
-                                                            .error}');
+                                                    WidgetsBinding.instance
+                                                        .addPostFrameCallback((
+                                                        _) {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext context) {
+                                                          return AlertDialog(
+                                                            title: Text('Error'),
+                                                            content: Text('${snapshot
+                                                                .error}'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.of(context).pop();
+                                                                },
+                                                                child: Text('OK'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    });
+                                                    return Container();
                                                   }
                                                   // return const CircularProgressIndicator();
                                                   return Center(
@@ -105,9 +123,31 @@ class VerificationEmail extends StatelessWidget {
                                             }
                                           }
                                           else if (snapshot.hasError) {
-                                            return Text(
-                                                '${snapshot
-                                                    .error}');
+
+                                            WidgetsBinding.instance
+                                                .addPostFrameCallback((
+                                                _) {
+                                              showDialog(
+                                                context: context,
+                                                builder: (BuildContext context) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text('${snapshot
+                                                        .error}'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.of(context).pop();
+                                                        },
+                                                        child: Text('OK'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            });
+                                            return Container();
+
                                           }
                                           // return const CircularProgressIndicator();
                                           return Center(
@@ -117,15 +157,59 @@ class VerificationEmail extends StatelessWidget {
                                       );
                                     }
                                     else{
-                                      return Text(
-                                          'Profile Pic upload Failed');
+
+
+                                      WidgetsBinding.instance
+                                          .addPostFrameCallback((
+                                          _) {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text('Error'),
+                                              content: Text('lbl_prof_pic_upload_failed'.tr),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  child: Text('OK'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      });
+                                      return Container();
+
                                     }
 
                                     }
                                   else if(snapshot.hasError){
-                                    return Text(
-                                        '${snapshot
-                                            .error}');
+                                    WidgetsBinding.instance
+                                        .addPostFrameCallback((
+                                        _) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content: Text('${snapshot
+                                                .error}'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text('OK'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    });
+                                    return Container();
+
                                   }
                                   return Center(
                                     child: CircularProgressIndicator(),
@@ -135,9 +219,30 @@ class VerificationEmail extends StatelessWidget {
 
                             }
                             else if (snapshot.hasError) {
-                              return Text(
-                                  '${snapshot
-                                      .error}');
+                              WidgetsBinding.instance
+                                  .addPostFrameCallback((
+                                  _) {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('Error'),
+                                      content: Text('${snapshot
+                                          .error}'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('OK'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              });
+                              return Container();
+
                             }
                             return Center(
                               child: CircularProgressIndicator(),
@@ -147,9 +252,30 @@ class VerificationEmail extends StatelessWidget {
                     }
                   }
                   else if(snapshot.hasError){
-                    return Text(
-                        '${snapshot
-                            .error}');
+                    WidgetsBinding.instance
+                        .addPostFrameCallback((
+                        _) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text('Error'),
+                            content: Text('${snapshot
+                                .error}'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('OK'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    });
+                    return Container();
+
                   }
                   return Center(
                     child: CircularProgressIndicator(),
