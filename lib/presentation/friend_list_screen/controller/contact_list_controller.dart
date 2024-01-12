@@ -19,8 +19,7 @@ class FriendListController extends GetxController {
 
 
   Stream <Rx<List<ContactListItemModel>>?> getContacts(String searchString) {
-    // Rx<List<ContactListItemModel>>? allContacts;
-    // allContacts?.value=[];
+
     Rx<List<ContactListItemModel>> allContacts = Rx<List<ContactListItemModel>>([]);
     ContactListItemModel x=ContactListItemModel();
 
