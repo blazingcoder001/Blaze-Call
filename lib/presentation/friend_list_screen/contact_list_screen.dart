@@ -1,6 +1,8 @@
-import '../friend_list_screen/widgets/friendlist_item_widget.dart';
-import 'controller/friend_list_controller.dart';
-import 'models/friendlist_item_model.dart';
+import 'package:blaze_call/presentation/friend_list_screen/models/contact_list_model.dart';
+
+import '../friend_list_screen/widgets/contact_item_widget.dart';
+import 'controller/contact_list_controller.dart';
+import 'models/contactlist_item_model.dart';
 import 'package:blaze_call/core/app_export.dart';
 import 'package:blaze_call/widgets/app_bar/appbar_image.dart';
 import 'package:blaze_call/widgets/app_bar/appbar_title.dart';
@@ -35,14 +37,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                     }),
                 centerTitle: true,
                 title: AppbarTitle(text: "lbl_contact_list".tr),
-                // actions: [
-                //   AppbarImage(
-                //       height: getSize(24),
-                //       width: getSize(24),
-                //       svgPath: ImageConstant.imgSearch,
-                //       margin:
-                //           getMargin(left: 16, top: 13, right: 16, bottom: 12))
-                // ]
+
             ),
             body:
             Container(
@@ -60,13 +55,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                // Padding(
-                                //     padding: getPadding(left: 12, bottom: 5),
-                                //     child: Text("lbl_all_friends".tr,
-                                //         overflow: TextOverflow.ellipsis,
-                                //         textAlign: TextAlign.left,
-                                //         style: AppStyle
-                                //             .txtGilroyMedium16BlueA700)),
+
                                 GestureDetector(
                                   onTap: (){
                                     controller.selectedIndex.value=0;
@@ -136,24 +125,7 @@ class FriendListScreen extends GetWidget<FriendListController> {
                               thickness: getVerticalSize(2),
                               color: ColorConstant.blueA700,
                               indent: getHorizontalSize(300))):SizedBox()),
-                      // Padding(
-                      //     padding: getPadding(top: 22),
-                      //     child: Obx(() => ListView.separated(
-                      //         physics: NeverScrollableScrollPhysics(),
-                      //         shrinkWrap: true,
-                      //         separatorBuilder: (context, index) {
-                      //           return SizedBox(height: getVerticalSize(17));
-                      //         },
-                      //         itemCount: controller.friendListModelObj.value
-                      //             .friendlistItemList.value.length,
-                      //         itemBuilder: (context, index) {
-                      //           FriendlistItemModel model = controller
-                      //               .friendListModelObj
-                      //               .value
-                      //               .friendlistItemList
-                      //               .value[index];
-                      //           return FriendlistItemWidget(model);
-                      //         }))),
+
                       Obx(() => Expanded(child: Stack(
                         children: [
                           Visibility(
@@ -167,16 +139,18 @@ class FriendListScreen extends GetWidget<FriendListController> {
                                     separatorBuilder: (context, index) {
                                       return SizedBox(height: getVerticalSize(17));
                                     },
-                                    itemCount: controller.friendListModelObj.value
-                                        .friendlistItemList.value.length,
+                                    itemCount: controller.contactListModelObj.value
+                                        .contactListItemList.value.length,
                                     itemBuilder: (context, index) {
-                                      FriendlistItemModel model = controller
-                                          .friendListModelObj
+                                      ContactListItemModel model = controller
+                                          .contactListModelObj
                                           .value
-                                          .friendlistItemList
+                                          .contactListItemList
                                           .value[index];
                                       return FriendlistItemWidget(model);
-                                    })),
+                                    })
+
+                            ),
                           ),
                           Visibility(
                             visible: controller.selectedIndex.value == 1,
@@ -189,13 +163,13 @@ class FriendListScreen extends GetWidget<FriendListController> {
                                   separatorBuilder: (context, index) {
                                     return SizedBox(height: getVerticalSize(17));
                                   },
-                                  itemCount: controller.friendListModelObj.value
-                                      .friendlistItemList.value.length,
+                                  itemCount: controller.contactListModelObj.value
+                                      .contactListItemList.value.length,
                                   itemBuilder: (context, index) {
-                                    FriendlistItemModel model = controller
-                                        .friendListModelObj
+                                    ContactListItemModel model = controller
+                                        .contactListModelObj
                                         .value
-                                        .friendlistItemList
+                                        .contactListItemList
                                         .value[index];
                                     return FriendlistItemWidget(model);
                                   }),

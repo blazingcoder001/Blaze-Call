@@ -1,5 +1,5 @@
-import '../controller/friend_list_controller.dart';
-import '../models/friendlist_item_model.dart';
+import '../controller/contact_list_controller.dart';
+import '../models/contactlist_item_model.dart';
 import 'package:blaze_call/core/app_export.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class FriendlistItemWidget extends StatelessWidget {
   FriendlistItemWidget(this.friendlistItemModelObj);
 
-  FriendlistItemModel friendlistItemModelObj;
+  ContactListItemModel friendlistItemModelObj;
 
   var controller = Get.find<FriendListController>();
 
@@ -44,7 +44,7 @@ class FriendlistItemWidget extends StatelessWidget {
             children: [
               Obx(
                 () => Text(
-                  friendlistItemModelObj.nameTxt.value,
+                  friendlistItemModelObj.userName!.value,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.left,
                   style: AppStyle.txtGilroySemiBold18,
@@ -56,7 +56,7 @@ class FriendlistItemWidget extends StatelessWidget {
                 ),
                 child: Obx(
                   () => Text(
-                    friendlistItemModelObj.mutualfriendsTxt.value,
+                    friendlistItemModelObj.firstName!.value,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
                     style: AppStyle.txtGilroyRegular14,

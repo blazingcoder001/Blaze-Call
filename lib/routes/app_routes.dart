@@ -1,7 +1,7 @@
 import 'package:blaze_call/presentation/contact_us_screen/contact_us_screen.dart';
 import 'package:blaze_call/presentation/contact_us_screen/binding/contact_us_binding.dart';
-import 'package:blaze_call/presentation/friend_list_screen/friend_list_screen.dart';
-import 'package:blaze_call/presentation/friend_list_screen/binding/friend_list_binding.dart';
+import 'package:blaze_call/presentation/friend_list_screen/contact_list_screen.dart';
+import 'package:blaze_call/presentation/friend_list_screen/binding/contact_list_binding.dart';
 import 'package:blaze_call/presentation/share_screen/share_screen.dart';
 import 'package:blaze_call/presentation/share_screen/binding/share_binding.dart';
 import 'package:blaze_call/presentation/image_management_screen/image_management_screen.dart';
