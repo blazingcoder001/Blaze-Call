@@ -1,4 +1,7 @@
+import 'dart:typed_data';
+
 import 'package:blaze_call/core/app_export.dart';
+import 'package:blaze_call/core/utils/pic_upload.dart';
 import 'package:blaze_call/core/utils/validation_functions.dart';
 import 'package:blaze_call/core/utils/verification_email_backend.dart';
 import 'package:blaze_call/presentation/displayMessagesSnackBar/displayMessage.dart';
@@ -11,6 +14,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/utils/RemoveAccount.dart';
 import '../../core/utils/SaveUserName.dart';
+import '../../core/utils/defaultprofilepiccreator.dart';
 import '../../core/utils/emailSignup.dart';
 
 // ignore_for_file: must_be_immutable
@@ -30,71 +34,115 @@ class VerificationEmail extends StatelessWidget {
                 builder: (BuildContext context, AsyncSnapshot<int?> snapshot){
                   if(snapshot.hasData){
                     if(snapshot.data==1){
-                      return FutureBuilder<int?>(
-                        future: emailSignup(
-                            args[0], args[1], args[2], args[3]
-                        ),
-                        builder: (BuildContext context, AsyncSnapshot<int?> snapshot) {
-                          if (snapshot.hasData) {
-                            if (snapshot.data == 1) {
-                              return FutureBuilder<
-                                  int?>(
-                                future: saveUserName(
-                                    args[3], "email"),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<
-                                        int?> snapshot) {
-                                  if (snapshot
-                                      .hasData) {
-                                    if (snapshot.data ==
-                                        1) {
-                                      displayMessage
-                                          .display(
-                                          "Username saved successfully!");
-                                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                                        Get.toNamed(AppRoutes.friendListScreen);
-                                      });
-                                      // return Text(
-                                      //     "Username saved successfully");
-                                      return Container(); //Empty container is returned that doesn't affect
-                                      //the UI apart from a pale black color that goes when tapped once
-                                      //on the screen.
+                      return FutureBuilder
+                        (
+                          future: createPic(args[0][0]),
+                          builder: (BuildContext context, AsyncSnapshot snapshot){
+                            if (snapshot.hasData){
+                              ByteData pic=snapshot.data;
+
+                              return FutureBuilder
+                                (future: picUpload(pic),
+                                  builder:  (BuildContext context, AsyncSnapshot snapshot){
+
+                                  if( snapshot.hasData){
+                                    if(snapshot.data!='0') {
+                                      return FutureBuilder<int?>(
+                                        future: emailSignup(
+                                            args[0], args[1], args[2], args[3],snapshot.data
+                                        ),
+                                        builder: (BuildContext context,
+                                            AsyncSnapshot<int?> snapshot) {
+                                          if (snapshot.hasData) {
+                                            if (snapshot.data == 1) {
+                                              return FutureBuilder<
+                                                  int?>(
+                                                future: saveUserName(
+                                                    args[3], "email"),
+                                                builder: (BuildContext context,
+                                                    AsyncSnapshot<
+                                                        int?> snapshot) {
+                                                  if (snapshot
+                                                      .hasData) {
+                                                    if (snapshot.data ==
+                                                        1) {
+                                                      displayMessage
+                                                          .display(
+                                                          "Username saved successfully!");
+                                                      WidgetsBinding.instance
+                                                          .addPostFrameCallback((
+                                                          _) {
+                                                        Get.toNamed(AppRoutes
+                                                            .friendListScreen);
+                                                      });
+                                                      // return Text(
+                                                      //     "Username saved successfully");
+                                                      return Container(); //Empty container is returned that doesn't affect
+                                                      //the UI
+                                                    }
+                                                    else if (snapshot.data ==
+                                                        0) {
+                                                      displayMessage
+                                                          .display(
+                                                          "Some Error Occurred");
+                                                      removeAccount();
+                                                      // return Text(
+                                                      //     "Some Error Occurred");
+                                                      return Container();
+                                                    }
+                                                  } else if (snapshot
+                                                      .hasError) {
+                                                    return Text(
+                                                        '${snapshot
+                                                            .error}');
+                                                  }
+                                                  // return const CircularProgressIndicator();
+                                                  return Center(
+                                                    child: CircularProgressIndicator(),
+                                                  );
+                                                },
+                                              );
+                                            }
+                                          }
+                                          else if (snapshot.hasError) {
+                                            return Text(
+                                                '${snapshot
+                                                    .error}');
+                                          }
+                                          // return const CircularProgressIndicator();
+                                          return Center(
+                                            child: CircularProgressIndicator(),
+                                          );
+                                        },
+                                      );
                                     }
-                                    else if (snapshot.data ==
-                                        0) {
-                                      displayMessage
-                                          .display(
-                                          "Some Error Occurred");
-                                      removeAccount();
-                                      // return Text(
-                                      //     "Some Error Occurred");
-                                      return Container();
+                                    else{
+                                      return Text(
+                                          'Profile Pic upload Failed');
                                     }
-                                  } else if (snapshot
-                                      .hasError) {
+
+                                    }
+                                  else if(snapshot.hasError){
                                     return Text(
                                         '${snapshot
                                             .error}');
                                   }
-                                  // return const CircularProgressIndicator();
                                   return Center(
                                     child: CircularProgressIndicator(),
                                   );
-                                },
-                              );
-                            }
 
+                                  });
+
+                            }
+                            else if (snapshot.hasError) {
+                              return Text(
+                                  '${snapshot
+                                      .error}');
+                            }
+                            return Center(
+                              child: CircularProgressIndicator(),
+                            );
                           }
-                          else if (snapshot.hasError) {
-                            return Text(
-                                '${snapshot
-                                    .error}');
-                          }
-                          // return const CircularProgressIndicator();
-                          return Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        },
                       );
                     }
                   }
