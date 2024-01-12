@@ -1,4 +1,4 @@
-import '../controller/friend_list_controller.dart';
+import '../controller/contact_list_controller.dart';
 import 'package:get/get.dart';
 
 class FriendListBinding extends Bindings {
