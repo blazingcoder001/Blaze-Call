@@ -18,29 +18,23 @@ class FriendListController extends GetxController {
   }
 
 
-  Stream <Rx<List<ContactListItemModel>>> getContacts() {
-    Rx<List<ContactListItemModel>> allContacts;
-    allContacts=[] as Rx<List<ContactListItemModel>>;
+  Stream <Rx<List<ContactListItemModel>>?> getContacts(String searchString) {
+    // Rx<List<ContactListItemModel>>? allContacts;
+    // allContacts?.value=[];
+    Rx<List<ContactListItemModel>> allContacts = Rx<List<ContactListItemModel>>([]);
     ContactListItemModel x=ContactListItemModel();
 
     final requestsRef = FirebaseFirestore.instance.collection('users');
 
     return requestsRef.snapshots().map((querySnapshot) {
-      String uniName;
       for (var doc in querySnapshot.docs) {
-        // dynamic len;
-        // len = doc.data()['Requests'].length;
-        // for (int i = 0; i < len; i++) {
-        //   uniName = doc.data()['Requests'][i]['University Name'];
-        //
-        //   if (!allUniNames.contains(uniName)) {
-        //     allUniNames.add(uniName);
-        //   }
-        // }
-        x.userName?.value=doc.id;
-        x.firstName?.value=doc.data()['First Name'];
-        x.lastName?.value=doc.data()['Last Name'];
-        allContacts.value.add(x);
+        if(searchString != '' && doc.id.contains(searchString)) {
+          print("searchString: "+searchString);
+          x.userName?.value = doc.id;
+          x.firstName?.value = doc.data()['First Name'];
+          x.lastName?.value = doc.data()['Last Name'];
+          allContacts!.value.add(x);
+        }
       }
       return allContacts;
     });

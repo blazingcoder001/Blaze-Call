@@ -192,6 +192,8 @@ class FriendListScreen extends GetWidget<FriendListController> {
 }
 
 class SearchBar extends SearchDelegate<String> {
+  final FriendListController controller = Get.put(FriendListController());
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -218,6 +220,7 @@ class SearchBar extends SearchDelegate<String> {
   @override
   Widget buildResults(BuildContext context) {
     // Implement your search logic here.
+
     return const Center(
       child: Text('Search Results'),
     );
@@ -225,9 +228,30 @@ class SearchBar extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // Implement your suggestion logic here.
-    return const Center(
-      child: Text('Search Suggestions'),
-    );
+
+
+         return StreamBuilder<Rx<List<ContactListItemModel>>?>(
+          stream: controller.getContacts(query),
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            else {
+              return ListView.separated(
+                separatorBuilder: (context, index) {
+                  return const Divider();
+                },
+                itemCount: snapshot.data!.value.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(snapshot.data!.value[index].userName!.value),
+                  );
+                },
+              );
+            }
+          },
+        );
   }
 }
