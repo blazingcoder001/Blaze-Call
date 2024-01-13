@@ -19,8 +19,8 @@ import 'package:blaze_call/presentation/forgot_password_screen/forgot_password_s
 import 'package:blaze_call/presentation/forgot_password_screen/binding/forgot_password_binding.dart';
 import 'package:blaze_call/presentation/video_management_screen/video_management_screen.dart';
 import 'package:blaze_call/presentation/video_management_screen/binding/video_management_binding.dart';
-import 'package:blaze_call/presentation/contact_sharing_screen/contact_sharing_screen.dart';
-import 'package:blaze_call/presentation/contact_sharing_screen/binding/contact_sharing_binding.dart';
+import 'package:blaze_call/presentation/contact_viewing_screen/contact_viewing_screen.dart';
+import 'package:blaze_call/presentation/contact_viewing_screen/binding/contact_viewing_binding.dart';
 import 'package:blaze_call/presentation/followers_screen/followers_screen.dart';
 import 'package:blaze_call/presentation/followers_screen/binding/followers_binding.dart';
 import 'package:blaze_call/presentation/sign_up_screen/sign_up_screen.dart';
@@ -54,7 +54,7 @@ class AppRoutes {
 
   static const String videoManagementScreen = '/video_management_screen';
 
-  static const String contactSharingScreen = '/contact_sharing_screen';
+  static const String contactViewingScreen = '/contact_sharing_screen';
 
   static const String followersScreen = '/followers_screen';
 
@@ -143,10 +143,10 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: contactSharingScreen,
-      page: () => ContactSharingScreen(),
+      name: contactViewingScreen,
+      page: () => ContactViewingScreen(),
       bindings: [
-        ContactSharingBinding(),
+        ContactViewingBinding(),
       ],
     ),
     GetPage(

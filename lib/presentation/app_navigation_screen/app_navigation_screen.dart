@@ -811,7 +811,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
 
   onTapContactSharing() {
     Get.toNamed(
-      AppRoutes.contactSharingScreen,
+      AppRoutes.contactViewingScreen,
     );
   }
 

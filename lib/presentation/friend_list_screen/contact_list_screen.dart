@@ -249,12 +249,8 @@ class SearchBar extends SearchDelegate<String> {
                   //   title: Text(snapshot.data!.value[index].userName!.value),
                   //
                   // );
-                  return GestureDetector(
-                      child: FriendlistItemWidget(snapshot.data!.value[index]),
-                    onTap: (){
-                        Get.toNamed(AppRoutes.contactSharingScreen);
-                    },
-                  );
+                  return Container(
+                      child: FriendlistItemWidget(snapshot.data!.value[index]));
                 },
               );
             }

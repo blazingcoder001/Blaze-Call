@@ -143,5 +143,6 @@ final Map<String, String> enUs = {
   "lbl_username_saved":"Username saved successfully!",
   "lbl_some_error":"Some Error Occurred!",
   "lbl_prof_pic_upload_failed":"Profile Pic Upload Failed!",
+  "lbl_send_request":"Send Connection Request"
 
 };

@@ -47,7 +47,7 @@ class VerificationEmail extends StatelessWidget {
                                     if(snapshot.data!='0') {
                                       return FutureBuilder<int?>(
                                         future: emailSignup(
-                                            args[0], args[1], args[2], args[3],snapshot.data
+                                            args[0][0].toUpperCase()+args[0].substring(1), args[1][0].toUpperCase()+args[1].substring(1), args[2], args[3],snapshot.data
                                         ),
                                         builder: (BuildContext context,
                                             AsyncSnapshot<int?> snapshot) {
