@@ -757,7 +757,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
 
   onTapFriendList() {
     Get.toNamed(
-      AppRoutes.friendListScreen,
+      AppRoutes.contactListScreen,
     );
   }
 

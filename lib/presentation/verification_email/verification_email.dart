@@ -34,7 +34,7 @@ class VerificationEmail extends StatelessWidget {
                     if(snapshot.data==1){
                       return FutureBuilder
                         (
-                          future: createPic(args[0][0]),
+                          future: createPic(args[0][0].toUpperCase()),
                           builder: (BuildContext context, AsyncSnapshot snapshot){
                             if (snapshot.hasData){
                               ByteData pic=snapshot.data;
@@ -71,7 +71,7 @@ class VerificationEmail extends StatelessWidget {
                                                           .addPostFrameCallback((
                                                           _) {
                                                         Get.toNamed(AppRoutes
-                                                            .friendListScreen);
+                                                            .contactListScreen);
                                                       });
                                                       // return Text(
                                                       //     "Username saved successfully");

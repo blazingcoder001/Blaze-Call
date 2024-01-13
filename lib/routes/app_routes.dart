@@ -36,7 +36,7 @@ import 'package:get/get.dart';
 class AppRoutes {
   static const String contactUsScreen = '/contact_us_screen';
 
-  static const String friendListScreen = '/friend_list_screen';
+  static const String contactListScreen = '/contact_list_screen';
 
   static const String shareScreen = '/share_screen';
 
@@ -80,7 +80,7 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: friendListScreen,
+      name: contactListScreen,
       page: () => FriendListScreen(),
       bindings: [
         FriendListBinding(),

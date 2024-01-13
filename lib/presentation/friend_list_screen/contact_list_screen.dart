@@ -249,7 +249,12 @@ class SearchBar extends SearchDelegate<String> {
                   //   title: Text(snapshot.data!.value[index].userName!.value),
                   //
                   // );
-                  return FriendlistItemWidget(snapshot.data!.value[index]);
+                  return GestureDetector(
+                      child: FriendlistItemWidget(snapshot.data!.value[index]),
+                    onTap: (){
+                        Get.toNamed(AppRoutes.contactSharingScreen);
+                    },
+                  );
                 },
               );
             }
