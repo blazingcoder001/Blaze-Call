@@ -3,18 +3,22 @@ import 'package:flutter/material.dart';
 import '../../core/utils/authorization.dart';
 class LinkSentEmail{
   Authorization authorization=Authorization();
-  void display(){
+  int display(){
     if (!authorization.user!.emailVerified) {
       // Send email verification and notify the user
-      authorization.user?.sendEmailVerification();
+      // authorization.user?.sendEmailVerification();
       if (Get.context!.mounted) {
         ScaffoldMessenger.of(Get.context!).showSnackBar(
-          const SnackBar(
-            content: Text('A link has been sent to your email address. Please verify to continue.'),
+           SnackBar(
+            content: Text("lbl_acc_not_verified".tr),
             duration: Duration(seconds: 3),
           ),
         );
       }
+      return 0;
+    }
+    else{
+      return 1;
     }
   }
 }

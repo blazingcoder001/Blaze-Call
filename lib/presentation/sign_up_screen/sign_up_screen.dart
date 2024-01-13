@@ -76,6 +76,10 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                     check=1;
                                     return "lbl_invalid_text".tr;
                                   }
+                                  else if(value!.isEmpty){
+                                    check=1;
+                                    return "lbl_empty_field".tr;
+                                  }
                                   else{
                                     check=0;
                                   }
@@ -96,6 +100,10 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                   if (!isText(value)) {
                                     check=1;
                                     return "lbl_invalid_text".tr;
+                                  }
+                                  else if(value!.isEmpty){
+                                    check=1;
+                                    return "lbl_empty_field".tr;
                                   }
                                   else{
                                     check=0;
@@ -144,6 +152,16 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                 //   check=1;
                                 //   return null;
                                 // }
+                              validator: (value){
+                                if(value!.isEmpty){
+                                check=1;
+                                return "lbl_empty_field".tr;
+                                }
+                                else{
+                                  check=0;
+                                }
+                                return null;
+                              },
                                 ),
                             Padding(
                                 padding: getPadding(top: 19),

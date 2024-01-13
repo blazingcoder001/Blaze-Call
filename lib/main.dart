@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       fallbackLocale: const Locale('en', 'US'),
       title: 'blaze_call',
       initialBinding: InitialBindings() ,
-      initialRoute: AppRoutes.contactListScreen,
+      initialRoute: AppRoutes.signupLoginModuleScreen,
       // initialRoute: AppRoutes.emailVerification,
       getPages: AppRoutes.pages,
     );

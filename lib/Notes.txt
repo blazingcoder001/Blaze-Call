@@ -2,8 +2,6 @@ errors:-
 -> Remember to change code to move textfield to the top of soft keyboard to view it properly before
 typing. Do this first before doing any changes to a screen working on.
 To dos:-
--> The password field in sign up screen is not validated. Have to write code for that.(done)
--> Redirect user to login page after sign up.
 -> Also disable back button in sign up and login page.
 
 Remember:-
@@ -20,5 +18,9 @@ WillPopScope(
 );
 In this example, the onWillPop callback always returns false, which prevents the back button
 of the device from navigating back.
+
+-> check if the user is searching their own id in search contacts. The list should not show their own account.
+-> Then finish login module for email and gmail sign in methods.
+-> Create three index Req sent, Req pending and req accepted in the database for each user and update it accordingly.
 
 

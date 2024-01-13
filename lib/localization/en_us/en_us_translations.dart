@@ -143,6 +143,9 @@ final Map<String, String> enUs = {
   "lbl_username_saved":"Username saved successfully!",
   "lbl_some_error":"Some Error Occurred!",
   "lbl_prof_pic_upload_failed":"Profile Pic Upload Failed!",
-  "lbl_send_request":"Send Connection Request"
+  "lbl_send_request":"Send Connection Request",
+  "lbl_empty_field":"This field cannot be empty.",
+  "lbl_acc_not_verified":"This account is not verified yet. Please signup and verify again.",
+  "lbl_acc_does_not_exist":" Account does not exist for this email address.",
 
 };

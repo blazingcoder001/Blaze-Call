@@ -1,6 +1,8 @@
 
 
 import 'package:blaze_call/core/app_export.dart';
+import 'package:blaze_call/core/utils/deleteUser.dart';
+import 'package:blaze_call/core/utils/verification_email_backend.dart';
 
 import 'package:blaze_call/presentation/DisplayMessagesSnackBar/DisplayMessage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,7 +11,7 @@ import 'package:flutter/material.dart';
 import '../../presentation/DisplayMessagesSnackBar/LinkSentEmail.dart';
 import 'authorization.dart';
 
-Future<int>emailSignIn(String email, String password) async {
+Future<int?>emailSignIn(String email, String password) async {
   DisplayMessage displayMessage=DisplayMessage();
   try {
     Authorization authorization =Authorization();
@@ -18,11 +20,20 @@ Future<int>emailSignIn(String email, String password) async {
         email: email, password: password);
     // Check if the user's email is verified
     LinkSentEmail accountExistsEmail=LinkSentEmail();
-    accountExistsEmail.display();
-    return 1;
+    int result=accountExistsEmail.display();
+    // return result;
+    // int? result2=1;
+    // if(result==0){
+    //   Get.toNamed(AppRoutes.signUpScreen);
+    //   // result2= await verificationEmailBackend();
+    // }
+    if(result==0){
+      await deleteUser();//Deletes user if the account is not verified.
+    }
+    return result;
   } on FirebaseAuthException catch (e) {
     // Handle authentication exceptions and notify the user
-    displayMessage.display("Account does not exist for this email address.");
+    displayMessage.display("lbl_acc_does_not_exist".tr);
     return 0;
   }
 }

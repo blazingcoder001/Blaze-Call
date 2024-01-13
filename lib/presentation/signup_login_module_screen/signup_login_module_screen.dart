@@ -134,14 +134,75 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                               margin: getMargin(left: 1, top: 25),
                               padding: ButtonPadding.PaddingAll14,
                               fontStyle: ButtonFontStyle.GilroyMedium16,
-                              onTap: () {
+                              onTap: () async {
                                 _formKey.currentState!.validate();
+                                int? result;
                                 if (check == 0) {
-                                  emailSignIn(
-                                      controller.group10198Controller.text,
-                                      controller.group10198OneController.text);
+                                  WidgetsBinding.instance
+                                      .addPostFrameCallback((
+                                      _) {
+                                  showDialog(context: context,
+                                      barrierColor: null,
+                                      builder:(BuildContext context) {
+                                        return FutureBuilder(
+                                            future: emailSignIn(
+                                                controller.group10198Controller
+                                                    .text,
+                                                controller
+                                                    .group10198OneController
+                                                    .text),
+                                            builder:(BuildContext context, AsyncSnapshot snapshot){
+                                              if(snapshot.hasData) {
+                                                if (snapshot.data == 1) {
+                                                      WidgetsBinding.instance
+                                                          .addPostFrameCallback((
+                                                      _) {
+                                                        Get.toNamed(AppRoutes
+                                                            .contactListScreen);
+                                                      });
+                                                }
+                                              }
+                                              else if(snapshot.hasError){
+                                                WidgetsBinding.instance
+                                                    .addPostFrameCallback((
+                                                    _) {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (BuildContext context) {
+                                                      return AlertDialog(
+                                                        title: Text('Error'),
+                                                        content: Text('${snapshot
+                                                            .error}'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () {
+                                                              Navigator.of(context).pop();
+                                                            },
+                                                            child: Text('OK'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                });
+                                                return Container();
+                                              }
+                                              return Center(child: CircularProgressIndicator());
+
+                                            }
+
+                                        );
+                                      });
+                                  });
                                 }
                                 check = 0;
+                                if(result==1){
+                                    WidgetsBinding.instance
+                                        .addPostFrameCallback((
+                                    _) {
+                                      Get.toNamed(AppRoutes.contactListScreen);
+                                    });
+                                }
                               },
                             ),
                             Padding(
