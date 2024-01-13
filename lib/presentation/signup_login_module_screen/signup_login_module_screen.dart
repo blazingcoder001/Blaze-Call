@@ -161,6 +161,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                                             .contactListScreen);
                                                       });
                                                 }
+                                                return Container();
                                               }
                                               else if(snapshot.hasError){
                                                 WidgetsBinding.instance
@@ -187,6 +188,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                                 });
                                                 return Container();
                                               }
+
                                               return Center(child: CircularProgressIndicator());
 
                                             }

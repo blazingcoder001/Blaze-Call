@@ -23,4 +23,41 @@ of the device from navigating back.
 -> Then finish login module for email and gmail sign in methods.
 -> Create three index Req sent, Req pending and req accepted in the database for each user and update it accordingly.
 
+-> If you press back button from verification email window and try to sign in again, the background futures will be called again and again causing errors.
+Especially if the account is deleted in sign in window. In order to avoid this, try adding futures inside getx controller and delete it when pressing back button.
+
+class MyController extends GetxController {
+  // Your controller code here.
+}
+
+class MyPage extends StatelessWidget {
+  final MyController myController = Get.put(MyController());
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        Get.delete<MyController>();
+        return true;
+      },
+      child: Scaffold(
+        body: FutureBuilder(
+          future: myController.myFuture,
+          builder: (context, snapshot) {
+            // Your FutureBuilder code here.
+          },
+        ),
+      ),
+    );
+  }
+}
+
+In this example, the MyController class extends GetxController and contains your controller code. The MyPage class is a StatelessWidget that creates an instance of MyController using Get.put.
+
+The WillPopScope widget is used to detect when the back button is pressed. When the back button is pressed, the Get.delete method is called to remove the MyController instance from memory.
+
+The FutureBuilder widget is used to build the UI based on the result of myController.myFuture.
+
+->
+
 
