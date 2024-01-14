@@ -1,4 +1,5 @@
 import 'package:blaze_call/core/app_export.dart';
+import 'package:blaze_call/core/utils/EmailSignIn.dart';
 import 'package:blaze_call/presentation/signup_login_module_screen/models/signup_login_module_model.dart';
 import 'package:flutter/material.dart';
 
@@ -14,15 +15,15 @@ class SignupLoginModuleController extends GetxController {
 
   Rx<bool> isCheckbox = false.obs;
 
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  //   Future.delayed(const Duration(milliseconds: 3000), () {
-  //     Get.offNamed(
-  //       AppRoutes.signUpScreen,
-  //     );
-  //   });
-  // }
+
+  Future<int?> future1(String x, String y){
+    return emailSignIn(x, y);
+  }
+
+ @override
+  void onReady(){
+    super.onReady();
+  }
 
   @override
   void onClose() {

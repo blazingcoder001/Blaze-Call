@@ -223,16 +223,16 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                     barrierColor: null,
                                     builder: (BuildContext context) {
                                       return FutureBuilder<int?>(
-                                        future: (checkUserName(
+                                        future: controller.future1(
                                             controller.group10198ThreeController
-                                                .text)),
+                                                .text),
                                         builder: (BuildContext context,
                                             AsyncSnapshot<int?> snapshot) {
                                           if (snapshot.hasData) {
                                             // print("has");
                                             if (snapshot.data == 1) {
                                               return FutureBuilder<int?>(
-                                                future: createAccountEmail(
+                                                future: controller.future2(
                                                     controller
                                                         .group10198TwoController
                                                         .text, controller

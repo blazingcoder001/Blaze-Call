@@ -6,16 +6,6 @@ class LinkSentEmail{
   Authorization authorization=Authorization();
   int display(){
     if (!authorization.user!.emailVerified) {
-      // Send email verification and notify the user
-      // authorization.user?.sendEmailVerification();
-      // if (Get.context!.mounted) {
-      //   ScaffoldMessenger.of(Get.context!).showSnackBar(
-      //      SnackBar(
-      //       content: Text("lbl_acc_not_verified".tr),
-      //       duration: Duration(seconds: 3),
-      //     ),
-      //   );
-      // }
       DisplayMessage displayMessage=DisplayMessage();
       displayMessage.display("lbl_acc_not_verified".tr);
       return 0;

@@ -12,6 +12,7 @@ import 'package:blaze_call/presentation/add_friends_screen/add_friends_screen.da
 import 'package:blaze_call/presentation/add_friends_screen/binding/add_friends_binding.dart';
 import 'package:blaze_call/presentation/preview_video_screen/preview_video_screen.dart';
 import 'package:blaze_call/presentation/preview_video_screen/binding/preview_video_binding.dart';
+import 'package:blaze_call/presentation/verification_email/binding/verification_email_binding.dart';
 import 'package:blaze_call/presentation/verification_email/verification_email.dart';
 import 'package:blaze_call/presentation/video_call_screen/video_call_screen.dart';
 import 'package:blaze_call/presentation/video_call_screen/binding/video_call_binding.dart';
@@ -194,6 +195,9 @@ class AppRoutes {
     GetPage(
       name: emailVerification,
       page: () => VerificationEmail(),
+      bindings: [
+        VerificationEmailBinding(),
+      ],
     ),
   ];
 }

@@ -7,21 +7,22 @@ Future<int?> verificationEmailBackend() async {
   int? k = 0;
   Authorization authorization = Authorization();
   authorization.user?.sendEmailVerification();
-  final completer = Completer<void>();
+  StreamSubscription<User?>? authStateSubscription;
   Timer.periodic(const Duration(seconds: 1), (timer) async {
-    authorization.user?.reload();
-    StreamSubscription<User?>? authStateSubscription;
+    await authorization.user?.reload();
     authStateSubscription =
         authorization.auth.authStateChanges().listen((userFi) {
           if (userFi != null && userFi.emailVerified) {
             timer.cancel();
             authStateSubscription?.cancel();
             k = 1;
-            completer.complete();
+          }
+          else if(userFi==null){
+            timer.cancel();
+            authStateSubscription?.cancel();
+            k = 1;
           }
         });
   });
-  await completer.future;
-  // print("object");
   return k;
 }

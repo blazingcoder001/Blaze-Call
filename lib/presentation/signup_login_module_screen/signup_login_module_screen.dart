@@ -100,7 +100,6 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                       (!isValidPassword(value,
                                           isRequired: true))) {
                                     check = 1;
-                                    // print("lklkklk");
                                     return "lbl_invalid_password".tr;
                                   }
                                   return null;
@@ -145,7 +144,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                       barrierColor: null,
                                       builder:(BuildContext context) {
                                         return FutureBuilder(
-                                            future: emailSignIn(
+                                            future: controller.future1(
                                                 controller.group10198Controller
                                                     .text,
                                                 controller
