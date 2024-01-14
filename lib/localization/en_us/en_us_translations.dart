@@ -141,11 +141,13 @@ final Map<String, String> enUs = {
   "msg_some_error":"Some error occurred!",
   "lbl_contact_list":"Contact List",
   "lbl_username_saved":"Username saved successfully!",
-  "lbl_some_error":"Some Error Occurred!",
+  "lbl_some_error":"Some unknown error Occurred. Please try again later!",
   "lbl_prof_pic_upload_failed":"Profile Pic Upload Failed!",
   "lbl_send_request":"Send Connection Request",
   "lbl_empty_field":"This field cannot be empty.",
   "lbl_acc_not_verified":"This account is not verified yet. Please signup and verify again.",
   "lbl_acc_does_not_exist":" Account does not exist for this email address.",
+  "lbl_verification_timeout":"Verification timed out. Please try again.",
+  "lbl_error_create_account":"Error while creating account. Please try again later.",
 
 };

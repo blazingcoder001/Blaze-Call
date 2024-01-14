@@ -2,6 +2,8 @@ import 'package:blaze_call/core/utils/CreateAccountEmail.dart';
 import 'package:blaze_call/core/utils/CheckUserName.dart';
 import 'package:blaze_call/core/utils/RemoveAccount.dart';
 import 'package:blaze_call/core/utils/SaveUserName.dart';
+import 'package:blaze_call/core/utils/authorization.dart';
+import 'package:blaze_call/core/utils/deleteUser.dart';
 import 'package:blaze_call/core/utils/emailSignup.dart';
 import 'package:blaze_call/core/utils/verification_email_backend.dart';
 
@@ -268,14 +270,237 @@ class SignUpScreen extends GetWidget<SignUpController> {
 
                                                       });
                                                     }
-                                                    else
-                                                    if (snapshot.data == 0) {
-                                                      displaymessage.display(
-                                                          "msg_acc_exists_email".tr);
-                                                      // return Text(
-                                                      //     "Account already exists for this email.");
-                                                      return Container();
+                                                    else if (snapshot.data == 0) {
+                                                      Authorization authorization=Authorization();
+                                                      return FutureBuilder(
+                                                          future: controller.future3(authorization.uid),
+                                                          builder:(BuildContext context, AsyncSnapshot snapshot)  {
+                                                            if(snapshot.hasData){
+                                                              if(snapshot.data==0){
+                                                                return FutureBuilder(
+                                                                    future: controller.future4(controller
+                                                                        .group10198TwoController
+                                                                        .text, controller
+                                                                        .group10198FourController
+                                                                        .text ),
+                                                                    builder: (BuildContext context, AsyncSnapshot snapshot){
+                                                                      if(snapshot.hasData){
+                                                                        if(snapshot.data==1){
+                                                                          return FutureBuilder(
+                                                                              future: controller.future5(),
+                                                                              builder: (BuildContext context,AsyncSnapshot snapshot){
+                                                                                if(snapshot.hasData) {
+                                                                                  if(snapshot.data==1) {
+                                                                                    return FutureBuilder(
+                                                                                        future: controller
+                                                                                            .future2(
+                                                                                            controller
+                                                                                                .group10198TwoController
+                                                                                                .text,
+                                                                                            controller
+                                                                                                .group10198FourController
+                                                                                                .text),
+                                                                                        builder: (
+                                                                                            BuildContext context,
+                                                                                            AsyncSnapshot snapshot) {
+                                                                                          if (snapshot
+                                                                                              .hasData) {
+                                                                                            if (snapshot
+                                                                                                .data ==
+                                                                                                1) {
+                                                                                              WidgetsBinding
+                                                                                                  .instance
+                                                                                                  .addPostFrameCallback((
+                                                                                                  _) {
+                                                                                                // Do something after the build phase is complete
+                                                                                                // For example, call setState()
+                                                                                                Get
+                                                                                                    .toNamed(
+                                                                                                  AppRoutes
+                                                                                                      .emailVerification,
+                                                                                                  arguments: [
+                                                                                                    controller
+                                                                                                        .group10198Controller
+                                                                                                        .text,
+                                                                                                    controller
+                                                                                                        .group10198OneController
+                                                                                                        .text,
+                                                                                                    controller
+                                                                                                        .group10198TwoController
+                                                                                                        .text,
+                                                                                                    controller
+                                                                                                        .group10198ThreeController
+                                                                                                        .text,
+                                                                                                  ],
+                                                                                                );
+                                                                                              });
+                                                                                            }
+                                                                                            else
+                                                                                            if (snapshot
+                                                                                                .data ==
+                                                                                                0) {
+                                                                                              displaymessage
+                                                                                                  .display(
+                                                                                                  "lbl_error_create_account"
+                                                                                                      .tr);
+                                                                                            }
+                                                                                            return Container();
+                                                                                          }
+                                                                                          else
+                                                                                          if (snapshot
+                                                                                              .hasError) {
+                                                                                            WidgetsBinding
+                                                                                                .instance
+                                                                                                .addPostFrameCallback((
+                                                                                                _) {
+                                                                                              showDialog(
+                                                                                                context: context,
+                                                                                                builder: (
+                                                                                                    BuildContext context) {
+                                                                                                  return AlertDialog(
+                                                                                                    title: Text(
+                                                                                                        'Error'),
+                                                                                                    content: Text(
+                                                                                                        '${snapshot
+                                                                                                            .error}'),
+                                                                                                    actions: [
+                                                                                                      TextButton(
+                                                                                                        onPressed: () {
+                                                                                                          Navigator
+                                                                                                              .of(
+                                                                                                              context)
+                                                                                                              .pop();
+                                                                                                        },
+                                                                                                        child: Text(
+                                                                                                            'OK'),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  );
+                                                                                                },
+                                                                                              );
+                                                                                            });
+                                                                                            return Container();
+                                                                                          }
+                                                                                          return Center(
+                                                                                              child: CircularProgressIndicator());
+                                                                                        });
+                                                                                  }
+                                                                                  else if(snapshot.data==0){
+                                                                                    displaymessage.display("lbl_error_create_account".tr);
+                                                                                  }
+                                                                                  return Container();
+
+                                                                                }
+                                                                                else if(snapshot.hasError){
+                                                                                  WidgetsBinding
+                                                                                      .instance
+                                                                                      .addPostFrameCallback((
+                                                                                      _) {
+                                                                                    showDialog(
+                                                                                      context: context,
+                                                                                      builder: (
+                                                                                          BuildContext context) {
+                                                                                        return AlertDialog(
+                                                                                          title: Text(
+                                                                                              'Error'),
+                                                                                          content: Text(
+                                                                                              '${snapshot
+                                                                                                  .error}'),
+                                                                                          actions: [
+                                                                                            TextButton(
+                                                                                              onPressed: () {
+                                                                                                Navigator
+                                                                                                    .of(
+                                                                                                    context)
+                                                                                                    .pop();
+                                                                                              },
+                                                                                              child: Text(
+                                                                                                  'OK'),
+                                                                                            ),
+                                                                                          ],
+                                                                                        );
+                                                                                      },
+                                                                                    );
+                                                                                  });
+                                                                                  return Container();
+                                                                                }
+                                                                                return Center(child: CircularProgressIndicator());
+
+
+                                                                              });
+                                                                        }
+                                                                      }
+                                                                      else if(snapshot.hasError){
+                                                                        WidgetsBinding.instance
+                                                                            .addPostFrameCallback((
+                                                                            _) {
+                                                                          showDialog(
+                                                                            context: context,
+                                                                            builder: (BuildContext context) {
+                                                                              return AlertDialog(
+                                                                                title: Text('Error'),
+                                                                                content: Text('${snapshot
+                                                                                    .error}'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () {
+                                                                                      Navigator.of(context).pop();
+                                                                                    },
+                                                                                    child: Text('OK'),
+                                                                                  ),
+                                                                                ],
+                                                                              );
+                                                                            },
+                                                                          );
+                                                                        });
+                                                                        return Container();
+                                                                      }
+                                                                      return Center(child: CircularProgressIndicator());
+                                                                    });
+                                                                // return FutureBuilder(
+                                                                //     future: controller.future4(),
+                                                                //     builder: (BuildContext context,AsyncSnapshot snapshot){
+                                                                //       return Container();
+                                                                //     });
+                                                              }
+                                                              else if(snapshot.data==1){
+
+                                                                displaymessage.display(
+                                                                    "msg_acc_exists_email".tr);
+
+                                                                return Container();
+                                                              }
+                                                            }
+                                                            else if(snapshot.hasError){
+                                                              WidgetsBinding.instance
+                                                                  .addPostFrameCallback((
+                                                                  _) {
+                                                                showDialog(
+                                                                  context: context,
+                                                                  builder: (BuildContext context) {
+                                                                    return AlertDialog(
+                                                                      title: Text('Error'),
+                                                                      content: Text('${snapshot
+                                                                          .error}'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () {
+                                                                            Navigator.of(context).pop();
+                                                                          },
+                                                                          child: Text('OK'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                );
+                                                              });
+                                                              return Container();
+                                                            }
+                                                            return Center(
+                                                                child: CircularProgressIndicator());
+                                                          });
                                                     }
+                                                    return Container();
                                                   } else
                                                   if (snapshot.hasError) {
                                                     WidgetsBinding.instance
@@ -324,7 +549,29 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                               return Container();
                                             }
                                           } else if (snapshot.hasError) {
-                                            return Text('${snapshot.error}');
+                                            WidgetsBinding.instance
+                                                .addPostFrameCallback((
+                                                _) {
+                                              showDialog(
+                                                context: context,
+                                                builder: (BuildContext context) {
+                                                  return AlertDialog(
+                                                    title: Text('Error'),
+                                                    content: Text('${snapshot
+                                                        .error}'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () {
+                                                          Navigator.of(context).pop();
+                                                        },
+                                                        child: Text('OK'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            });
+                                            return Container();
                                           }
                                           // return const CircularProgressIndicator();
                                           return Center(

@@ -1,5 +1,10 @@
 import 'package:blaze_call/core/app_export.dart';
 import 'package:blaze_call/core/utils/CreateAccountEmail.dart';
+import 'package:blaze_call/core/utils/EmailSignIn.dart';
+import 'package:blaze_call/core/utils/RemoveAccount.dart';
+import 'package:blaze_call/core/utils/checkUserId.dart';
+import 'package:blaze_call/core/utils/deleteUser.dart';
+import 'package:blaze_call/core/utils/emailSignInOnly.dart';
 import 'package:blaze_call/presentation/sign_up_screen/models/sign_up_model.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +30,15 @@ class SignUpController extends GetxController {
   Future<int?> future2 (String a,String b){
     return createAccountEmail(a, b);
   }
-
+  Future<int?> future3(String? uid){
+    return checkUID(uid);
+  }
+  Future<void> future4(String a, String b){
+    return emailSignInOnly(a, b);
+  }
+  Future<int?> future5(){
+    return removeAccount();
+  }
   @override
   void onReady() {
     super.onReady();

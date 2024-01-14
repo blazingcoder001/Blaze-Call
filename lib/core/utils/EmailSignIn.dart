@@ -1,6 +1,7 @@
 
 
 import 'package:blaze_call/core/app_export.dart';
+import 'package:blaze_call/core/utils/RemoveAccount.dart';
 import 'package:blaze_call/core/utils/checkUserId.dart';
 import 'package:blaze_call/core/utils/deleteUser.dart';
 import 'package:blaze_call/presentation/DisplayMessagesSnackBar/DisplayMessage.dart';
@@ -19,8 +20,13 @@ Future<int?>emailSignIn(String email, String password) async {
     LinkSentEmail accountExistsEmail=LinkSentEmail();
     int result1=accountExistsEmail.display();
     int? result2=await checkUID(authorization.uid);
+    int? result3;
     if(result1==0 || result2==0){
-      await deleteUser();//Deletes user if the account is not verified.
+      result3=await removeAccount();//Deletes user if the account is not verified.
+    }
+    if(result3==0){
+      displayMessage.display("lbl_some_error".tr);
+      return 0;
     }
     if(result1==1 && result2==0){
       displayMessage.display("lbl_acc_not_verified".tr);

@@ -28,6 +28,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                 future: controller.future1(),
                 builder: (BuildContext context, AsyncSnapshot<int?> snapshot){
                   if(snapshot.hasData){
+                    print("data: "+snapshot.data.toString());
                     if(snapshot.data==1){
                       return FutureBuilder
                         (
@@ -118,6 +119,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                                                 },
                                               );
                                             }
+                                            return Container();
                                           }
                                           else if (snapshot.hasError) {
 
@@ -247,6 +249,10 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                           }
                       );
                     }
+                    else if(snapshot.data==-1){
+                      displayMessage.display("lbl_verification_timeout".tr);
+                    }
+                    return Container();
                   }
                   else if(snapshot.hasError){
                     WidgetsBinding.instance
