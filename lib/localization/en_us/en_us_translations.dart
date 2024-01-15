@@ -136,7 +136,7 @@ final Map<String, String> enUs = {
       "character [@#%^&+="+r"$"+"]\n->length of at least 4\n->no white space allowed",
   "msg_snack-bar_error_1":"user data is empty'",
   "lbl_invalid_text":"Please enter valid text",
-  "msg_acc_exists_email":"Account already exists for this email.",
+  "msg_acc_exists_email":"Account already exists for this email. Please sign in to continue.",
   "msg_username_taken":"Username already taken! Please try another one.",
   "msg_some_error":"Some error occurred!",
   "lbl_contact_list":"Contact List",

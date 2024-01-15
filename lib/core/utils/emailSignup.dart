@@ -7,6 +7,7 @@ Future<int?> emailSignup(String firstName, String lastName, String email, String
 
   int? result;
   Authorization authorization =Authorization();
+  authorization.initializeAuthorization();
   result= await FirebaseFirestore.instance
       .collection('users')
       .doc(username)

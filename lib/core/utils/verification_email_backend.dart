@@ -6,10 +6,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 Future<int?> verificationEmailBackend() async {
   int? k = 0;
   Authorization authorization = Authorization();
+  authorization.initializeAuthorization();
   authorization.user?.sendEmailVerification();
   // StreamSubscription<User?>? authStateSubscription;
   final completer=Completer<void>();
-  int counter=30;
+  int counter=300;
   Timer.periodic(const Duration(seconds: 1), (timer)  async {
     counter--;
     print(timer.tick);

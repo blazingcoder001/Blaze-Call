@@ -5,6 +5,7 @@ import '../../core/utils/authorization.dart';
 class LinkSentEmail{
   Authorization authorization=Authorization();
   int display(){
+    authorization.initializeAuthorization();
     if (!authorization.user!.emailVerified) {
       DisplayMessage displayMessage=DisplayMessage();
       displayMessage.display("lbl_acc_not_verified".tr);

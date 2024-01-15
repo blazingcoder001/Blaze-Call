@@ -58,6 +58,7 @@ The WillPopScope widget is used to detect when the back button is pressed. When 
 
 The FutureBuilder widget is used to build the UI based on the result of myController.myFuture.
 
-->
+-> Email check is not done in signup page.
+-> Have to add code to sign out user when the app is closed or paused.
 
 

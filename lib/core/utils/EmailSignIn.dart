@@ -16,6 +16,8 @@ Future<int?>emailSignIn(String email, String password) async {
     // Sign in with email and password
     UserCredential userCredential = await authorization.auth.signInWithEmailAndPassword(
         email: email, password: password);
+    authorization.initializeAuthorization();
+
     // Check if the user's email is verified
     LinkSentEmail accountExistsEmail=LinkSentEmail();
     int result1=accountExistsEmail.display();

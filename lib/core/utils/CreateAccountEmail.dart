@@ -7,6 +7,7 @@ import 'authorization.dart';
 Future<int> createAccountEmail(String email, String password) async {
   try{
     Authorization authorization =Authorization();
+    authorization.initializeAuthorization();
     UserCredential userCredential = await authorization.auth.createUserWithEmailAndPassword(
       email: email,
       password: password,

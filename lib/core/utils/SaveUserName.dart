@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<int> saveUserName(String username, String signInMethod) async {
   Authorization authorization=Authorization();
+  authorization.initializeAuthorization();
   int result= await FirebaseFirestore.instance
       .collection('UID')
       .doc(authorization.uid)

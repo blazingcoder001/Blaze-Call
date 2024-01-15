@@ -3,7 +3,7 @@ class Authorization {
    FirebaseAuth auth=FirebaseAuth.instance;
    User? user;
    String? uid;
-   Authorization(){
+   initializeAuthorization(){
     user = auth.currentUser;
     uid = user?.uid;
   }

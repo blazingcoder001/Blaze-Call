@@ -30,12 +30,13 @@ class SignUpController extends GetxController {
   Future<int?> future2 (String a,String b){
     return createAccountEmail(a, b);
   }
-  Future<int?> future3(String? uid){
-    return checkUID(uid);
-  }
-  Future<void> future4(String a, String b){
+  Future<void> future3(String a, String b){
     return emailSignInOnly(a, b);
   }
+  Future<int?> future4(String? uid){
+    return checkUID(uid);
+  }
+
   Future<int?> future5(){
     return removeAccount();
   }
