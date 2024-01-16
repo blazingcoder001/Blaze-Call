@@ -4,15 +4,21 @@ import 'package:flutter/scheduler.dart';
 
 class DisplayMessage{
   void display(String message){
-    if (Get.context!.mounted) {
-      SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-        ScaffoldMessenger.of(Get.context!).showSnackBar(
-          SnackBar(
-            content: Text(message),
-            duration: Duration(seconds: 3),
-          ),
-        );
-      });
-    }
+    // if (Get.context!.mounted) {
+    //   SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+    //     ScaffoldMessenger.of(Get.context!).showSnackBar(
+    //       SnackBar(
+    //         content: Text(message),
+    //         duration: Duration(seconds: 3),
+    //       ),
+    //     );
+    //   });
+    // }
+    Get.snackbar(
+      "",
+      message,
+      icon: const Icon(Icons.add_alert),
+    );
+
   }
 }

@@ -45,7 +45,8 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                                     if(snapshot.data!='0') {
                                       return FutureBuilder<int?>(
                                         future: controller.future4(
-                                            args[0][0].toUpperCase()+args[0].substring(1), args[1][0].toUpperCase()+args[1].substring(1), args[2], args[3],snapshot.data
+                                            args[0][0].toUpperCase()+args[0].substring(1), args[1][0].toUpperCase()+args[1].substring(1), args[2], args[3],snapshot.data,
+                                          "email"
                                         ),
                                         builder: (BuildContext context,
                                             AsyncSnapshot<int?> snapshot) {

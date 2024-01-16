@@ -22,8 +22,8 @@ class VerificationEmailController extends GetxController {
   Future<String> future3(ByteData pic){
     return picUpload(pic);
   }
-  Future<int?> future4(firstName, lastName, email, username, url){
-    return emailSignup(firstName, lastName, email, username, url);
+  Future<int?> future4(firstName, lastName, email, username, url, signInMethod){
+    return emailSignup(firstName, lastName, email, username, url, signInMethod);
   }
 
   Future<int?> future5(username, signInMethod){

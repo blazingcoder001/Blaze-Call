@@ -330,7 +330,8 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
     await GoogleAuthHelper().googleSignInProcess().then((googleUser) {
       if (googleUser != null) {
         //TODO Actions to be performed after signin
-        print("lkllkllklkl");
+        // print("lkllkllklkl");
+
       } else {
         Get.snackbar('Error', 'msg_snack-bar_error_1'.tr);
       }

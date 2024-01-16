@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import 'authorization.dart';
 
-Future<int?> emailSignup(String firstName, String lastName, String email, String username, String url) async {
+Future<int?> emailSignup(String firstName, String lastName, String email, String username, String url, signInMethod) async {
 
   int? result;
   Authorization authorization =Authorization();
@@ -26,7 +26,7 @@ Future<int?> emailSignup(String firstName, String lastName, String email, String
       result2=await FirebaseFirestore.instance
           .collection('users')
           .doc(username)
-          .set({'First Name': firstName, 'Last Name':lastName, 'email': email, 'signInMethod':'email','UID': authorization.uid,
+          .set({'First Name': firstName, 'Last Name':lastName, 'email': email, 'signInMethod': signInMethod,'UID': authorization.uid,
         'profilePicURL':url}, SetOptions(merge: true))
           .then(
               (value) {
