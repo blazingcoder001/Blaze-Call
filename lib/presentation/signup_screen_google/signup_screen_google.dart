@@ -98,29 +98,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                   }
                                   return null;
                                 }),
-                            // Padding(
-                            //     padding: getPadding(top: 18),
-                            //     child: Text("lbl_email_id".tr,
-                            //         overflow: TextOverflow.ellipsis,
-                            //         textAlign: TextAlign.left,
-                            //         style: AppStyle.txtGilroyMedium16)),
-                            // CustomTextFormField(
-                            //     focusNode: FocusNode(),
-                            //     controller: controller.group10198TwoController,
-                            //     hintText: "lbl_enter_email_id".tr,
-                            //     margin: getMargin(top: 8),
-                            //     textInputType: TextInputType.emailAddress,
-                            //     validator: (value) {
-                            //       if (value == null ||
-                            //           (!isValidEmail(value, isRequired: true))) {
-                            //         check=1;
-                            //         return "lbl_invalid_email".tr;
-                            //       }
-                            //       else{
-                            //         check=0;
-                            //       }
-                            //       return null;
-                            //     }),
+
                             Padding(
                                 padding: getPadding(top: 18),
                                 child: Text("lbl_username".tr,
@@ -133,13 +111,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                               hintText: "lbl_enter_username".tr,
                               margin: getMargin(top: 8),
                               textInputType: TextInputType.phone,
-                              // validator: (value) {
-                              //   if (!isValidPhone(value)) {
-                              //     return "Please enter valid phone number";
-                              //   }
-                              //   check=1;
-                              //   return null;
-                              // }
+
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   check = 1;
@@ -150,47 +122,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                 return null;
                               },
                             ),
-                            // Padding(
-                            //     padding: getPadding(top: 19),
-                            //     child: Text("lbl_password".tr,
-                            //         overflow: TextOverflow.ellipsis,
-                            //         textAlign: TextAlign.left,
-                            //         style: AppStyle.txtGilroyMedium16)),
-                            // Obx(() => CustomTextFormField(
-                            //     focusNode: FocusNode(),
-                            //     controller: controller.group10198FourController,
-                            //     hintText: "lbl_enter_password".tr,
-                            //     margin: getMargin(top: 7),
-                            //     // padding: TextFormFieldPadding.PaddingT12,
-                            //     textInputAction: TextInputAction.done,
-                            //     textInputType: TextInputType.visiblePassword,
-                            //     suffix: InkWell(
-                            //         onTap: () {
-                            //           controller.isShowPassword.value =
-                            //           !controller.isShowPassword.value;
-                            //         },
-                            //         child: Container(
-                            //             margin: getMargin(all: 12),
-                            //             child: CustomImageView(
-                            //                 svgPath:
-                            //                 controller.isShowPassword.value
-                            //                     ? ImageConstant.imgEye
-                            //                     : ImageConstant.imgEye))),
-                            //     suffixConstraints: BoxConstraints(
-                            //         maxHeight: getVerticalSize(44)),
-                            //     validator: (value) {
-                            //       if (value == null ||
-                            //           (!isValidPassword(value,
-                            //               isRequired: true))) {
-                            //         check=1;
-                            //         return "lbl_invalid_password".tr;
-                            //       }
-                            //       else{
-                            //         check=0;
-                            //       }
-                            //       return null;
-                            //     },
-                            //     isObscureText: controller.isShowPassword.value)),
+
                             CustomButton(
                                 height: getVerticalSize(50),
                                 text: "lbl_create_account".tr,
@@ -200,8 +132,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                 onTap: () async {
                                   _formKey.currentState!.validate();
                                   if (check == 0) {
-                                    // print("controller3 value:" + controller
-                                    //     .group10198ThreeController.text);
+
                                     DisplayMessage displaymessage =
                                         DisplayMessage();
 

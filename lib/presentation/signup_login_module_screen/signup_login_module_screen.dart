@@ -389,6 +389,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
     //   Get.snackbar('Error', onError.toString());
     // });
     showDialog(context: Get.context!,
+        barrierColor: null,
         builder: (BuildContext context){
           return FutureBuilder(
               future: controller.future2(),
