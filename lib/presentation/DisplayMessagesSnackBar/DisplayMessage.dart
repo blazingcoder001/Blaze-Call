@@ -14,11 +14,13 @@ class DisplayMessage{
     //     );
     //   });
     // }
-    Get.snackbar(
-      "",
-      message,
-      icon: const Icon(Icons.add_alert),
-    );
+      SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+        Get.snackbar(
+          "",
+          message,
+          icon: const Icon(Icons.add_alert),
+        );
+      });
 
   }
 }

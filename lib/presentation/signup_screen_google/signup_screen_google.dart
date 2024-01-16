@@ -1,15 +1,4 @@
-import 'package:blaze_call/core/utils/CreateAccountEmail.dart';
-import 'package:blaze_call/core/utils/CheckUserName.dart';
-import 'package:blaze_call/core/utils/RemoveAccount.dart';
-import 'package:blaze_call/core/utils/SaveUserName.dart';
-import 'package:blaze_call/core/utils/authorization.dart';
-import 'package:blaze_call/core/utils/authoriztion_google.dart';
-import 'package:blaze_call/core/utils/deleteUser.dart';
-import 'package:blaze_call/core/utils/emailSignup.dart';
-import 'package:blaze_call/core/utils/verification_email_backend.dart';
-
 import 'package:blaze_call/presentation/DisplayMessagesSnackBar/DisplayMessage.dart';
-
 import 'package:blaze_call/core/app_export.dart';
 import 'package:blaze_call/core/utils/validation_functions.dart';
 import 'package:blaze_call/presentation/signup_screen_google/signup_screen_controller_google/signup_screen_controller_google.dart';
@@ -21,7 +10,7 @@ import 'package:blaze_call/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: must_be_immutable
-class SignUpScreen extends GetWidget<SignUpControllerGoogle> {
+class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late int signUpResult;
   late int usernameCheck;
@@ -257,12 +246,13 @@ class SignUpScreen extends GetWidget<SignUpControllerGoogle> {
                                                                         builder: (BuildContext context,AsyncSnapshot snapshot){
                                                                           if(snapshot.hasData){
                                                                             return FutureBuilder(
-                                                                                future: controller.future5(controller.group10198Controller, controller.group10198OneController, snapshot.data, controller.group10198ThreeController, url, "google"),
+                                                                                future: controller.future5(controller.group10198Controller.text[0].toUpperCase()+controller.group10198Controller.text.substring(1),
+                                                                                    controller.group10198OneController.text[0].toUpperCase()+controller.group10198OneController.text.substring(1), snapshot.data, controller.group10198ThreeController.text, url, "google"),
                                                                                 builder: (BuildContext context,AsyncSnapshot snapshot){
                                                                                   if(snapshot.hasData){
                                                                                     if(snapshot.data==1){
                                                                                       return FutureBuilder(
-                                                                                          future: controller.future6(controller.group10198ThreeController, "google"),
+                                                                                          future: controller.future6(controller.group10198ThreeController.text, "google"),
                                                                                           builder: (BuildContext context, AsyncSnapshot snapshot){
                                                                                             if(snapshot.hasData){
                                                                                               if(snapshot.data==1){
@@ -390,6 +380,39 @@ class SignUpScreen extends GetWidget<SignUpControllerGoogle> {
                                                                   }
                                                                   return Container();
                                                                 }
+                                                                else if(snapshot.hasError){
+                                                                  WidgetsBinding
+                                                                      .instance
+                                                                      .addPostFrameCallback(
+                                                                          (_) {
+                                                                        showDialog(
+                                                                          context: context,
+                                                                          builder:
+                                                                              (BuildContext
+                                                                          context) {
+                                                                            return AlertDialog(
+                                                                              title: Text(
+                                                                                  'Error'),
+                                                                              content: Text(
+                                                                                  '${snapshot.error}'),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed:
+                                                                                      () {
+                                                                                    Navigator.of(context)
+                                                                                        .pop();
+                                                                                  },
+                                                                                  child: Text(
+                                                                                      'OK'),
+                                                                                ),
+                                                                              ],
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                      });
+                                                                  return Container();
+                                                                }
+                                                                return Center(child: CircularProgressIndicator());
                                                               });
                                                         }
                                                         else if (snapshot
@@ -428,313 +451,6 @@ class SignUpScreen extends GetWidget<SignUpControllerGoogle> {
                                                         return Center(child: CircularProgressIndicator(),);
                                                       });
 
-                                                  // return FutureBuilder<int?>(
-                                                  //   future: controller.future2(
-                                                  //       controller
-                                                  //           .group10198TwoController
-                                                  //           .text, controller
-                                                  //       .group10198FourController
-                                                  //       .text),
-                                                  //   builder: (BuildContext context,
-                                                  //       AsyncSnapshot<
-                                                  //           int?> snapshot) {
-                                                  //     if (snapshot.hasData) {
-                                                  //       if (snapshot.data == 1) {
-                                                  //         WidgetsBinding.instance
-                                                  //             .addPostFrameCallback((
-                                                  //             _) {
-                                                  //           // Do something after the build phase is complete
-                                                  //           // For example, call setState()
-                                                  //           Get.toNamed(AppRoutes
-                                                  //               .emailVerification,
-                                                  //             arguments: [
-                                                  //               controller
-                                                  //                   .group10198Controller
-                                                  //                   .text,
-                                                  //               controller
-                                                  //                   .group10198OneController
-                                                  //                   .text,
-                                                  //               controller
-                                                  //                   .group10198TwoController
-                                                  //                   .text,
-                                                  //               controller
-                                                  //                   .group10198ThreeController
-                                                  //                   .text,
-                                                  //             ],
-                                                  //           );
-                                                  //
-                                                  //         });
-                                                  //       }
-                                                  //       else if (snapshot.data == 0) {
-                                                  //         displaymessage.display(
-                                                  //             "msg_acc_exists_email".tr);
-                                                  //
-                                                  //         return Container();
-                                                  //         // Authorization authorization=Authorization();
-                                                  //         // authorization.initializeAuthorization();
-                                                  //         // return FutureBuilder(
-                                                  //         //     future: controller.future3(controller
-                                                  //         //         .group10198TwoController
-                                                  //         //         .text, controller
-                                                  //         //         .group10198FourController
-                                                  //         //         .text ),
-                                                  //         //     builder:(BuildContext context, AsyncSnapshot snapshot)  {
-                                                  //         //       if(snapshot.hasData){
-                                                  //         //         if(snapshot.data==1){
-                                                  //         //           authorization.initializeAuthorization();
-                                                  //         //           return FutureBuilder(
-                                                  //         //               future:controller.future4(authorization.uid) ,
-                                                  //         //               builder: (BuildContext context, AsyncSnapshot snapshot){
-                                                  //         //                 if(snapshot.hasData){
-                                                  //         //                   if(snapshot.data==0){
-                                                  //         //                     return FutureBuilder(
-                                                  //         //                         future: controller.future5(),
-                                                  //         //                         builder: (BuildContext context,AsyncSnapshot snapshot){
-                                                  //         //                           if(snapshot.hasData) {
-                                                  //         //                             if(snapshot.data==1) {
-                                                  //         //                               return FutureBuilder(
-                                                  //         //                                   future: controller
-                                                  //         //                                       .future2(
-                                                  //         //                                       controller
-                                                  //         //                                           .group10198TwoController
-                                                  //         //                                           .text,
-                                                  //         //                                       controller
-                                                  //         //                                           .group10198FourController
-                                                  //         //                                           .text),
-                                                  //         //                                   builder: (
-                                                  //         //                                       BuildContext context,
-                                                  //         //                                       AsyncSnapshot snapshot) {
-                                                  //         //                                     if (snapshot
-                                                  //         //                                         .hasData) {
-                                                  //         //                                       if (snapshot
-                                                  //         //                                           .data ==
-                                                  //         //                                           1) {
-                                                  //         //                                         WidgetsBinding
-                                                  //         //                                             .instance
-                                                  //         //                                             .addPostFrameCallback((
-                                                  //         //                                             _) {
-                                                  //         //                                           // Do something after the build phase is complete
-                                                  //         //                                           // For example, call setState()
-                                                  //         //                                           Get
-                                                  //         //                                               .toNamed(
-                                                  //         //                                             AppRoutes
-                                                  //         //                                                 .emailVerification,
-                                                  //         //                                             arguments: [
-                                                  //         //                                               controller
-                                                  //         //                                                   .group10198Controller
-                                                  //         //                                                   .text,
-                                                  //         //                                               controller
-                                                  //         //                                                   .group10198OneController
-                                                  //         //                                                   .text,
-                                                  //         //                                               controller
-                                                  //         //                                                   .group10198TwoController
-                                                  //         //                                                   .text,
-                                                  //         //                                               controller
-                                                  //         //                                                   .group10198ThreeController
-                                                  //         //                                                   .text,
-                                                  //         //                                             ],
-                                                  //         //                                           );
-                                                  //         //                                         });
-                                                  //         //                                       }
-                                                  //         //                                       else
-                                                  //         //                                       if (snapshot
-                                                  //         //                                           .data ==
-                                                  //         //                                           0) {
-                                                  //         //                                         displaymessage
-                                                  //         //                                             .display(
-                                                  //         //                                             "lbl_error_create_account"
-                                                  //         //                                                 .tr);
-                                                  //         //                                       }
-                                                  //         //                                       return Container();
-                                                  //         //                                     }
-                                                  //         //                                     else
-                                                  //         //                                     if (snapshot
-                                                  //         //                                         .hasError) {
-                                                  //         //                                       WidgetsBinding
-                                                  //         //                                           .instance
-                                                  //         //                                           .addPostFrameCallback((
-                                                  //         //                                           _) {
-                                                  //         //                                         showDialog(
-                                                  //         //                                           context: context,
-                                                  //         //                                           builder: (
-                                                  //         //                                               BuildContext context) {
-                                                  //         //                                             return AlertDialog(
-                                                  //         //                                               title: Text(
-                                                  //         //                                                   'Error'),
-                                                  //         //                                               content: Text(
-                                                  //         //                                                   '${snapshot
-                                                  //         //                                                       .error}'),
-                                                  //         //                                               actions: [
-                                                  //         //                                                 TextButton(
-                                                  //         //                                                   onPressed: () {
-                                                  //         //                                                     Navigator
-                                                  //         //                                                         .of(
-                                                  //         //                                                         context)
-                                                  //         //                                                         .pop();
-                                                  //         //                                                   },
-                                                  //         //                                                   child: Text(
-                                                  //         //                                                       'OK'),
-                                                  //         //                                                 ),
-                                                  //         //                                               ],
-                                                  //         //                                             );
-                                                  //         //                                           },
-                                                  //         //                                         );
-                                                  //         //                                       });
-                                                  //         //                                       return Container();
-                                                  //         //                                     }
-                                                  //         //                                     return Center(
-                                                  //         //                                         child: CircularProgressIndicator());
-                                                  //         //                                   });
-                                                  //         //                             }
-                                                  //         //                             else if(snapshot.data==0){
-                                                  //         //                               displaymessage.display("lbl_error_create_account".tr);
-                                                  //         //                             }
-                                                  //         //                             return Container();
-                                                  //         //
-                                                  //         //                           }
-                                                  //         //                           else if(snapshot.hasError){
-                                                  //         //                             WidgetsBinding
-                                                  //         //                                 .instance
-                                                  //         //                                 .addPostFrameCallback((
-                                                  //         //                                 _) {
-                                                  //         //                               showDialog(
-                                                  //         //                                 context: context,
-                                                  //         //                                 builder: (
-                                                  //         //                                     BuildContext context) {
-                                                  //         //                                   return AlertDialog(
-                                                  //         //                                     title: Text(
-                                                  //         //                                         'Error'),
-                                                  //         //                                     content: Text(
-                                                  //         //                                         '${snapshot
-                                                  //         //                                             .error}'),
-                                                  //         //                                     actions: [
-                                                  //         //                                       TextButton(
-                                                  //         //                                         onPressed: () {
-                                                  //         //                                           Navigator
-                                                  //         //                                               .of(
-                                                  //         //                                               context)
-                                                  //         //                                               .pop();
-                                                  //         //                                         },
-                                                  //         //                                         child: Text(
-                                                  //         //                                             'OK'),
-                                                  //         //                                       ),
-                                                  //         //                                     ],
-                                                  //         //                                   );
-                                                  //         //                                 },
-                                                  //         //                               );
-                                                  //         //                             });
-                                                  //         //                             return Container();
-                                                  //         //                           }
-                                                  //         //                           return Center(child: CircularProgressIndicator());
-                                                  //         //
-                                                  //         //
-                                                  //         //                         });
-                                                  //         //                   }
-                                                  //         //                   else if(snapshot.data==1){
-                                                  //         //
-                                                  //         //                     displaymessage.display(
-                                                  //         //                         "msg_acc_exists_email".tr);
-                                                  //         //
-                                                  //         //                     return Container();
-                                                  //         //                   }
-                                                  //         //                 }
-                                                  //         //                 else if(snapshot.hasError){
-                                                  //         //                   WidgetsBinding.instance
-                                                  //         //                       .addPostFrameCallback((
-                                                  //         //                       _) {
-                                                  //         //                     showDialog(
-                                                  //         //                       context: context,
-                                                  //         //                       builder: (BuildContext context) {
-                                                  //         //                         return AlertDialog(
-                                                  //         //                           title: Text('Error'),
-                                                  //         //                           content: Text('${snapshot
-                                                  //         //                               .error}'),
-                                                  //         //                           actions: [
-                                                  //         //                             TextButton(
-                                                  //         //                               onPressed: () {
-                                                  //         //                                 Navigator.of(context).pop();
-                                                  //         //                               },
-                                                  //         //                               child: Text('OK'),
-                                                  //         //                             ),
-                                                  //         //                           ],
-                                                  //         //                         );
-                                                  //         //                       },
-                                                  //         //                     );
-                                                  //         //                   });
-                                                  //         //                   return Container();
-                                                  //         //                 }
-                                                  //         //                 return Center(child: CircularProgressIndicator());
-                                                  //         //               });
-                                                  //         //           // return FutureBuilder(
-                                                  //         //           //     future: controller.future4(),
-                                                  //         //           //     builder: (BuildContext context,AsyncSnapshot snapshot){
-                                                  //         //           //       return Container();
-                                                  //         //           //     });
-                                                  //         //         }
-                                                  //         //
-                                                  //         //       }
-                                                  //         //       else if(snapshot.hasError){
-                                                  //         //         WidgetsBinding.instance
-                                                  //         //             .addPostFrameCallback((
-                                                  //         //             _) {
-                                                  //         //           showDialog(
-                                                  //         //             context: context,
-                                                  //         //             builder: (BuildContext context) {
-                                                  //         //               return AlertDialog(
-                                                  //         //                 title: Text('Error'),
-                                                  //         //                 content: Text('${snapshot
-                                                  //         //                     .error}'),
-                                                  //         //                 actions: [
-                                                  //         //                   TextButton(
-                                                  //         //                     onPressed: () {
-                                                  //         //                       Navigator.of(context).pop();
-                                                  //         //                     },
-                                                  //         //                     child: Text('OK'),
-                                                  //         //                   ),
-                                                  //         //                 ],
-                                                  //         //               );
-                                                  //         //             },
-                                                  //         //           );
-                                                  //         //         });
-                                                  //         //         return Container();
-                                                  //         //       }
-                                                  //         //       return Center(
-                                                  //         //           child: CircularProgressIndicator());
-                                                  //         //     });
-                                                  //       }
-                                                  //       return Container();
-                                                  //     } else
-                                                  //     if (snapshot.hasError) {
-                                                  //       WidgetsBinding.instance
-                                                  //           .addPostFrameCallback((
-                                                  //           _) {
-                                                  //         showDialog(
-                                                  //           context: context,
-                                                  //           builder: (BuildContext context) {
-                                                  //             return AlertDialog(
-                                                  //               title: Text('Error'),
-                                                  //               content: Text('${snapshot
-                                                  //                   .error}'),
-                                                  //               actions: [
-                                                  //                 TextButton(
-                                                  //                   onPressed: () {
-                                                  //                     Navigator.of(context).pop();
-                                                  //                   },
-                                                  //                   child: Text('OK'),
-                                                  //                 ),
-                                                  //               ],
-                                                  //             );
-                                                  //           },
-                                                  //         );
-                                                  //       });
-                                                  //       return Container();
-                                                  //     }
-                                                  //     // return const CircularProgressIndicator();
-                                                  //     return Center(
-                                                  //       child: CircularProgressIndicator(),
-                                                  //     );
-                                                  //   },
-                                                  // );
                                                 } else if (snapshot.data == 0) {
                                                   displaymessage.display(
                                                       "msg_username_taken".tr);

@@ -12,6 +12,7 @@ import 'package:blaze_call/presentation/add_friends_screen/add_friends_screen.da
 import 'package:blaze_call/presentation/add_friends_screen/binding/add_friends_binding.dart';
 import 'package:blaze_call/presentation/preview_video_screen/preview_video_screen.dart';
 import 'package:blaze_call/presentation/preview_video_screen/binding/preview_video_binding.dart';
+import 'package:blaze_call/presentation/signup_screen_google/signup_screen_binding_google/signup_screen_binding_google.dart';
 import 'package:blaze_call/presentation/verification_email/binding/verification_email_binding.dart';
 import 'package:blaze_call/presentation/verification_email/verification_email.dart';
 import 'package:blaze_call/presentation/video_call_screen/video_call_screen.dart';
@@ -32,6 +33,7 @@ import 'package:blaze_call/presentation/signup_login_module_screen/signup_login_
 import 'package:blaze_call/presentation/signup_login_module_screen/binding/signup_login_module_binding.dart';
 import 'package:blaze_call/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:blaze_call/presentation/app_navigation_screen/binding/app_navigation_binding.dart';
+import 'package:blaze_call/presentation/signup_screen_google/signup_screen_google.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
@@ -70,6 +72,8 @@ class AppRoutes {
   static const String initialRoute = '/initialRoute';
 
   static const String emailVerification = '/emailVerification';
+
+  static const String signupGoogle = '/signupGoogle';
 
 
   static List<GetPage> pages = [
@@ -197,6 +201,13 @@ class AppRoutes {
       page: () => VerificationEmail(),
       bindings: [
         VerificationEmailBinding(),
+      ],
+    ),
+    GetPage(
+      name: signupGoogle,
+      page: () => SignUpScreenGoogle(),
+      bindings: [
+        SignupScreenBindingGoogle(),
       ],
     ),
   ];

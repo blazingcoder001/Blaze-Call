@@ -1,4 +1,5 @@
 import 'package:blaze_call/core/utils/EmailSignIn.dart';
+import 'package:blaze_call/core/utils/authorization.dart';
 import 'package:flutter/gestures.dart';
 import 'controller/signup_login_module_controller.dart';
 import 'package:blaze_call/core/app_export.dart';
@@ -42,7 +43,8 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                   key: _formKey,
                   child: Container(
                       width: double.maxFinite,
-                      padding: getPadding(left: 15, top: 21, right: 15, bottom: 21),
+                      padding:
+                          getPadding(left: 15, top: 21, right: 15, bottom: 21),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -61,7 +63,8 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                 textInputType: TextInputType.emailAddress,
                                 validator: (value) {
                                   if (value == null ||
-                                      (!isValidEmail(value, isRequired: true))) {
+                                      (!isValidEmail(value,
+                                          isRequired: true))) {
                                     check = 1;
                                     return "lbl_invalid_email".tr;
                                   }
@@ -104,7 +107,8 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                   }
                                   return null;
                                 },
-                                isObscureText: controller.isShowPassword.value)),
+                                isObscureText:
+                                    controller.isShowPassword.value)),
                             Padding(
                                 padding: getPadding(left: 1, top: 9, right: 7),
                                 child: Row(
@@ -138,71 +142,73 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                 int? result;
                                 if (check == 0) {
                                   WidgetsBinding.instance
-                                      .addPostFrameCallback((
-                                      _) {
-                                  showDialog(context: context,
-                                      barrierColor: null,
-                                      builder:(BuildContext context) {
-                                        return FutureBuilder(
-                                            future: controller.future1(
-                                                controller.group10198Controller
-                                                    .text,
-                                                controller
-                                                    .group10198OneController
-                                                    .text),
-                                            builder:(BuildContext context, AsyncSnapshot snapshot){
-                                              if(snapshot.hasData) {
-                                                if (snapshot.data == 1) {
-                                                      WidgetsBinding.instance
-                                                          .addPostFrameCallback((
-                                                      _) {
-                                                        Get.toNamed(AppRoutes
-                                                            .contactListScreen);
-                                                      });
+                                      .addPostFrameCallback((_) {
+                                    showDialog(
+                                        context: context,
+                                        barrierColor: null,
+                                        builder: (BuildContext context) {
+                                          return FutureBuilder(
+                                              future: controller.future1(
+                                                  controller
+                                                      .group10198Controller
+                                                      .text,
+                                                  controller
+                                                      .group10198OneController
+                                                      .text),
+                                              builder: (BuildContext context,
+                                                  AsyncSnapshot snapshot) {
+                                                if (snapshot.hasData) {
+                                                  if (snapshot.data == 1) {
+                                                    WidgetsBinding.instance
+                                                        .addPostFrameCallback(
+                                                            (_) {
+                                                      Get.toNamed(AppRoutes
+                                                          .contactListScreen);
+                                                    });
+                                                  }
+                                                  return Container();
+                                                } else if (snapshot.hasError) {
+                                                  WidgetsBinding.instance
+                                                      .addPostFrameCallback(
+                                                          (_) {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                          context) {
+                                                        return AlertDialog(
+                                                          title: Text('Error'),
+                                                          content: Text(
+                                                              '${snapshot.error}'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () {
+                                                                Navigator.of(
+                                                                        context)
+                                                                    .pop();
+                                                              },
+                                                              child: Text('OK'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                  });
+                                                  return Container();
                                                 }
-                                                return Container();
-                                              }
-                                              else if(snapshot.hasError){
-                                                WidgetsBinding.instance
-                                                    .addPostFrameCallback((
-                                                    _) {
-                                                  showDialog(
-                                                    context: context,
-                                                    builder: (BuildContext context) {
-                                                      return AlertDialog(
-                                                        title: Text('Error'),
-                                                        content: Text('${snapshot
-                                                            .error}'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () {
-                                                              Navigator.of(context).pop();
-                                                            },
-                                                            child: Text('OK'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-                                                });
-                                                return Container();
-                                              }
 
-                                              return Center(child: CircularProgressIndicator());
-
-                                            }
-
-                                        );
-                                      });
+                                                return Center(
+                                                    child:
+                                                        CircularProgressIndicator());
+                                              });
+                                        });
                                   });
                                 }
                                 check = 0;
-                                if(result==1){
-                                    WidgetsBinding.instance
-                                        .addPostFrameCallback((
-                                    _) {
-                                      Get.toNamed(AppRoutes.contactListScreen);
-                                    });
+                                if (result == 1) {
+                                  WidgetsBinding.instance
+                                      .addPostFrameCallback((_) {
+                                    Get.toNamed(AppRoutes.contactListScreen);
+                                  });
                                 }
                               },
                             ),
@@ -214,7 +220,8 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Padding(
-                                          padding: getPadding(top: 10, bottom: 7),
+                                          padding:
+                                              getPadding(top: 10, bottom: 7),
                                           child: SizedBox(
                                               width: getHorizontalSize(130),
                                               child: Divider(
@@ -228,14 +235,15 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                           style: AppStyle
                                               .txtGilroyRegular16Bluegray200),
                                       Padding(
-                                          padding: getPadding(top: 10, bottom: 7),
+                                          padding:
+                                              getPadding(top: 10, bottom: 7),
                                           child: SizedBox(
                                               width: getHorizontalSize(129),
                                               child: Divider(
                                                   height: getVerticalSize(1),
                                                   thickness: getVerticalSize(1),
-                                                  color:
-                                                      ColorConstant.blueGray200)))
+                                                  color: ColorConstant
+                                                      .blueGray200)))
                                     ])),
                             CustomButton(
                                 height: getVerticalSize(50),
@@ -243,7 +251,8 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                 margin: getMargin(left: 2, top: 28),
                                 variant: ButtonVariant.OutlineBlueA700,
                                 padding: ButtonPadding.PaddingT14,
-                                fontStyle: ButtonFontStyle.GilroyMedium16BlueA700,
+                                fontStyle:
+                                    ButtonFontStyle.GilroyMedium16BlueA700,
                                 prefixWidget: Container(
                                     margin: getMargin(right: 8),
                                     child: CustomImageView(
@@ -257,7 +266,8 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                 margin: getMargin(left: 2, top: 16),
                                 variant: ButtonVariant.OutlineBlueA700,
                                 padding: ButtonPadding.PaddingT14,
-                                fontStyle: ButtonFontStyle.GilroyMedium16BlueA700,
+                                fontStyle:
+                                    ButtonFontStyle.GilroyMedium16BlueA700,
                                 prefixWidget: Container(
                                     padding:
                                         getPadding(left: 9, top: 4, right: 3),
@@ -277,7 +287,8 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                 margin: getMargin(left: 2, top: 16),
                                 variant: ButtonVariant.OutlineBlueA700,
                                 padding: ButtonPadding.PaddingT14,
-                                fontStyle: ButtonFontStyle.GilroyMedium16BlueA700,
+                                fontStyle:
+                                    ButtonFontStyle.GilroyMedium16BlueA700,
                                 prefixWidget: Container(
                                     margin: getMargin(right: 8),
                                     child: CustomImageView(
@@ -289,7 +300,8 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                     child: RichText(
                                         text: TextSpan(children: [
                                           TextSpan(
-                                              text: "Don’t have an account? ".tr,
+                                              text:
+                                                  "Don’t have an account? ".tr,
                                               style: TextStyle(
                                                   color: ColorConstant.fromHex(
                                                       "#ff12282a"),
@@ -305,21 +317,21 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                                   fontFamily: 'Gilroy',
                                                   fontWeight: FontWeight.w700)),
                                           TextSpan(
-                                              text: "Sign up.".tr,
-                                              style: TextStyle(
-                                                  color: ColorConstant.fromHex(
-                                                      "#ff0061ff"),
-                                                  fontSize: getFontSize(16),
-                                                  fontFamily: 'Gilroy',
-                                                  fontWeight: FontWeight.w700,
-                                                  decoration:
-                                                      TextDecoration.underline),
+                                            text: "Sign up.".tr,
+                                            style: TextStyle(
+                                                color: ColorConstant.fromHex(
+                                                    "#ff0061ff"),
+                                                fontSize: getFontSize(16),
+                                                fontFamily: 'Gilroy',
+                                                fontWeight: FontWeight.w700,
+                                                decoration:
+                                                    TextDecoration.underline),
                                             recognizer: TapGestureRecognizer()
-                                              ..onTap=(){
-                                                Get.toNamed(AppRoutes.signUpScreen);
-                                                },
+                                              ..onTap = () {
+                                                Get.toNamed(
+                                                    AppRoutes.signUpScreen);
+                                              },
                                           ),
-
                                         ]),
                                         textAlign: TextAlign.left)))
                           ]))),
@@ -327,17 +339,131 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
   }
 
   onTapSigninwithgoogle() async {
-    await GoogleAuthHelper().googleSignInProcess().then((googleUser) {
-      if (googleUser != null) {
-        //TODO Actions to be performed after signin
-        // print("lkllkllklkl");
+    // await GoogleAuthHelper().googleSignInProcess().then((googleUser) {
+    //   if (googleUser != null) {
+    //     //TODO Actions to be performed after signin
+    //     // print("lkllkllklkl");
+    //     Authorization authorization = Authorization();
+    //     authorization.initializeAuthorization();
+    //     return FutureBuilder(
+    //         future: controller.future2(authorization.uid),
+    //         builder: (BuildContext context, AsyncSnapshot snapshot) {
+    //           if (snapshot.hasData) {
+    //             if (snapshot.data == 1) {
+    //               WidgetsBinding.instance.addPostFrameCallback((_) {
+    //                 Get.toNamed(AppRoutes.contactListScreen);
+    //               });
+    //             }
+    //             else{
+    //               Get.toNamed(AppRoutes.signUpScreen);
+    //             }
+    //             return Container();
+    //           } else if (snapshot.hasError) {
+    //             WidgetsBinding.instance.addPostFrameCallback((_) {
+    //               showDialog(
+    //                 context: context,
+    //                 builder: (BuildContext context) {
+    //                   return AlertDialog(
+    //                     title: Text('Error'),
+    //                     content: Text('${snapshot.error}'),
+    //                     actions: [
+    //                       TextButton(
+    //                         onPressed: () {
+    //                           Navigator.of(context).pop();
+    //                         },
+    //                         child: Text('OK'),
+    //                       ),
+    //                     ],
+    //                   );
+    //                 },
+    //               );
+    //             });
+    //             return Container();
+    //           }
+    //           return Center(child: CircularProgressIndicator());
+    //         });
+    //   } else {
+    //     Get.snackbar('Error', 'msg_snack-bar_error_1'.tr);
+    //   }
+    // }).catchError((onError) {
+    //   Get.snackbar('Error', onError.toString());
+    // });
+    showDialog(context: Get.context!,
+        builder: (BuildContext context){
+          return FutureBuilder(
+              future: controller.future2(),
+              builder:(BuildContext context, AsyncSnapshot snapshot){
+                if(snapshot.hasData){
+                  Authorization authorization=Authorization();
+                  authorization.initializeAuthorization();
+                  print("lklklkllk: "+authorization.uid!);
+                  return FutureBuilder(
+                      future: controller.future3(authorization.uid),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.hasData) {
+                          if (snapshot.data == 1) {
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              Get.toNamed(AppRoutes.contactListScreen);
+                            });
+                          }
+                          else{
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              Get.toNamed(AppRoutes.signupGoogle);
+                            });
+                          }
+                          return Container();
+                        } else if (snapshot.hasError) {
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('Error'),
+                                  content: Text('${snapshot.error}'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('OK'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          });
+                          return Container();
+                        }
+                        return Center(child: CircularProgressIndicator());
+                      });
+                }
+                else if(snapshot.hasError){
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Error'),
+                          content: Text('${snapshot.error}'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  });
+                  return Container();
+                }
+                return Center(child: CircularProgressIndicator());
+              });
+        });
 
-      } else {
-        Get.snackbar('Error', 'msg_snack-bar_error_1'.tr);
-      }
-    }).catchError((onError) {
-      Get.snackbar('Error', onError.toString());
-    });
+
   }
 
   onTapSigninwithfacebook() async {
