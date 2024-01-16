@@ -111,14 +111,14 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Obx(() => CustomCheckbox(
-                                          text: "lbl_remember_me".tr,
-                                          value: controller.isCheckbox.value,
-                                          fontStyle:
-                                              CheckboxFontStyle.GilroyMedium14,
-                                          onChange: (value) {
-                                            controller.isCheckbox.value = value;
-                                          })),
+                                      // Obx(() => CustomCheckbox(
+                                      //     text: "lbl_remember_me".tr,
+                                      //     value: controller.isCheckbox.value,
+                                      //     fontStyle:
+                                      //         CheckboxFontStyle.GilroyMedium14,
+                                      //     onChange: (value) {
+                                      //       controller.isCheckbox.value = value;
+                                      //     })),
                                       Padding(
                                           padding: getPadding(top: 3),
                                           child: Text("msg_forgot_password".tr,
@@ -330,6 +330,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
     await GoogleAuthHelper().googleSignInProcess().then((googleUser) {
       if (googleUser != null) {
         //TODO Actions to be performed after signin
+        print("lkllkllklkl");
       } else {
         Get.snackbar('Error', 'msg_snack-bar_error_1'.tr);
       }

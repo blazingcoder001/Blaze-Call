@@ -1,3 +1,9 @@
+Important:-
+-> To get SHA-1 or SHA-256 id:
+keytool -list -v -keystore C:\Users\jrpji\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+Run the above command in terminal.
+
+
 errors:-
 -> Remember to change code to move textfield to the top of soft keyboard to view it properly before
 typing. Do this first before doing any changes to a screen working on.
