@@ -23,6 +23,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
       showDialog(
           context: context,
           barrierColor: null,
+          barrierDismissible: false,
           builder: (BuildContext context) {
             return FutureBuilder<int?>(
                 future: controller.future1(),

@@ -146,6 +146,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                     showDialog(
                                         context: context,
                                         barrierColor: null,
+                                        barrierDismissible: false,
                                         builder: (BuildContext context) {
                                           return FutureBuilder(
                                               future: controller.future1(
@@ -390,6 +391,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
     // });
     showDialog(context: Get.context!,
         barrierColor: null,
+        barrierDismissible: false,
         builder: (BuildContext context){
           return FutureBuilder(
               future: controller.future2(),

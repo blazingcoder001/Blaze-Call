@@ -15,7 +15,7 @@ import 'package:google_sign_in/google_sign_in.dart';
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     if(googleUser!=null) {
       final GoogleSignInAuthentication? googleAuth =
-      await googleUser?.authentication;
+      await googleUser.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,

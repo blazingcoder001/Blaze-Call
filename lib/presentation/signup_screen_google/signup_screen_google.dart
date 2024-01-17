@@ -141,6 +141,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                         // in the build context.
                                         context: Get.context!,
                                         barrierColor: null,
+                                        barrierDismissible: false,
                                         builder: (BuildContext context) {
                                           return FutureBuilder<int?>(
                                             future: controller.future1(
