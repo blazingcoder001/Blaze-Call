@@ -4,7 +4,7 @@ import 'package:blaze_call/core/app_export.dart';
 import 'package:blaze_call/core/utils/CreateAccountEmail.dart';
 import 'package:blaze_call/core/utils/EmailSignIn.dart';
 import 'package:blaze_call/core/utils/RemoveAccount.dart';
-import 'package:blaze_call/core/utils/authoriztion_google.dart';
+import 'package:blaze_call/core/utils/authorization_google.dart';
 import 'package:blaze_call/core/utils/checkUserId.dart';
 import 'package:blaze_call/core/utils/deleteUser.dart';
 import 'package:blaze_call/core/utils/emailSignInOnly.dart';

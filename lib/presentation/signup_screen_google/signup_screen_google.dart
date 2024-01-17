@@ -172,10 +172,10 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                     displaymessage.display("lbl_prof_pic_upload_failed".tr);
                                                                   }
                                                                   else{
-                                                                    return FutureBuilder(
-                                                                        future: controller.future4(),
-                                                                        builder: (BuildContext context,AsyncSnapshot snapshot){
-                                                                          if(snapshot.hasData){
+                                                                    // return FutureBuilder(
+                                                                    //     future: controller.future4(),
+                                                                    //     builder: (BuildContext context,AsyncSnapshot snapshot){
+                                                                    //       if(snapshot.hasData){
                                                                             return FutureBuilder(
                                                                                 future: controller.future5(controller.group10198Controller.text[0].toUpperCase()+controller.group10198Controller.text.substring(1),
                                                                                     controller.group10198OneController.text[0].toUpperCase()+controller.group10198OneController.text.substring(1), snapshot.data, controller.group10198ThreeController.text, url, "google"),
@@ -272,41 +272,41 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                                   }
                                                                                   return Center(child: CircularProgressIndicator());
                                                                                 });
-                                                                          }
-                                                                           else if(snapshot.hasError){
-                                                                            WidgetsBinding
-                                                                                .instance
-                                                                                .addPostFrameCallback(
-                                                                                    (_) {
-                                                                                  showDialog(
-                                                                                    context: context,
-                                                                                    builder:
-                                                                                        (BuildContext
-                                                                                    context) {
-                                                                                      return AlertDialog(
-                                                                                        title: Text(
-                                                                                            'Error'),
-                                                                                        content: Text(
-                                                                                            '${snapshot.error}'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed:
-                                                                                                () {
-                                                                                              Navigator.of(context)
-                                                                                                  .pop();
-                                                                                            },
-                                                                                            child: Text(
-                                                                                                'OK'),
-                                                                                          ),
-                                                                                        ],
-                                                                                      );
-                                                                                    },
-                                                                                  );
-                                                                                });
-                                                                            return Container();
-                                                                          }
-                                                                           return Center(child: CircularProgressIndicator());
-                                                                        });
+                                                                        //   }
+                                                                        //    else if(snapshot.hasError){
+                                                                        //     WidgetsBinding
+                                                                        //         .instance
+                                                                        //         .addPostFrameCallback(
+                                                                        //             (_) {
+                                                                        //           showDialog(
+                                                                        //             context: context,
+                                                                        //             builder:
+                                                                        //                 (BuildContext
+                                                                        //             context) {
+                                                                        //               return AlertDialog(
+                                                                        //                 title: Text(
+                                                                        //                     'Error'),
+                                                                        //                 content: Text(
+                                                                        //                     '${snapshot.error}'),
+                                                                        //                 actions: [
+                                                                        //                   TextButton(
+                                                                        //                     onPressed:
+                                                                        //                         () {
+                                                                        //                       Navigator.of(context)
+                                                                        //                           .pop();
+                                                                        //                     },
+                                                                        //                     child: Text(
+                                                                        //                         'OK'),
+                                                                        //                   ),
+                                                                        //                 ],
+                                                                        //               );
+                                                                        //             },
+                                                                        //           );
+                                                                        //         });
+                                                                        //     return Container();
+                                                                        //   }
+                                                                        //    return Center(child: CircularProgressIndicator());
+                                                                        // });
 
                                                                   }
                                                                   return Container();
