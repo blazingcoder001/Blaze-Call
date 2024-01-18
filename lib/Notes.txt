@@ -66,5 +66,16 @@ The FutureBuilder widget is used to build the UI based on the result of myContro
 
 -> Email check is not done in signup page.
 -> Have to add code to sign out user when the app is closed or paused.
+-> Now, UI is not responding when back button is pressed and clicked on the screen. This is because of setting barrierDismissible as false for showDialog().Have to work on that.
+-> Call Widgets.binding inside builder method of future builder to detect future builder finish execution.
+
+
+if(snapshot.hasData && snapshot.connectionState == ConnectionState.done){
+        WidgetsBinding.instance
+            .addPostFrameCallback((_) {
+
+        });
+      }
+->
 
 

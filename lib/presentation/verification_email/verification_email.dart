@@ -88,6 +88,8 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                                                       //     "Some Error Occurred");
                                                       return Container();
                                                     }
+                                                    Get.back();
+
                                                   } else if (snapshot
                                                       .hasError) {
                                                     WidgetsBinding.instance
@@ -121,6 +123,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                                                 },
                                               );
                                             }
+                                            Get.back();
                                             return Container();
                                           }
                                           else if (snapshot.hasError) {
@@ -254,6 +257,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                     else if(snapshot.data==-1){
                       displayMessage.display("lbl_verification_timeout".tr);
                     }
+                    Get.back();
                     return Container();
                   }
                   else if(snapshot.hasError){

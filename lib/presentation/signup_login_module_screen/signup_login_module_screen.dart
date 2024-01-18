@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:blaze_call/core/utils/EmailSignIn.dart';
 import 'package:blaze_call/core/utils/authorization.dart';
 import 'package:flutter/gestures.dart';
@@ -167,6 +169,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                                           .contactListScreen);
                                                     });
                                                   }
+                                                  Get.back();
                                                   return Container();
                                                 } else if (snapshot.hasError) {
                                                   WidgetsBinding.instance
@@ -395,11 +398,10 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
         builder: (BuildContext context){
           return FutureBuilder(
               future: controller.future2(),
-              builder:(BuildContext context, AsyncSnapshot snapshot){
-                if(snapshot.hasData){
-                  Authorization authorization=Authorization();
+              builder:(BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  Authorization authorization = Authorization();
                   authorization.initializeAuthorization();
-                  print("lklklkllk: "+authorization.uid!);
                   return FutureBuilder(
                       future: controller.future3(authorization.uid),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -409,12 +411,14 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                               Get.toNamed(AppRoutes.contactListScreen);
                             });
                           }
-                          else{
+                          else {
                             WidgetsBinding.instance.addPostFrameCallback((_) {
                               Get.toNamed(AppRoutes.signupGoogle);
                             });
                           }
+                          Get.back();
                           return Container();
+
                         } else if (snapshot.hasError) {
                           WidgetsBinding.instance.addPostFrameCallback((_) {
                             showDialog(
@@ -439,8 +443,9 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                         }
                         return Center(child: CircularProgressIndicator());
                       });
+
                 }
-                else if(snapshot.hasError){
+                else if (snapshot.hasError) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     showDialog(
                       context: context,
@@ -463,8 +468,12 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                   return Container();
                 }
                 return Center(child: CircularProgressIndicator());
-              });
-        });
+              }
+
+              );
+
+        }
+        );
 
 
   }

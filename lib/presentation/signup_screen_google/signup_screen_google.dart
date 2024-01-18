@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:blaze_call/presentation/DisplayMessagesSnackBar/DisplayMessage.dart';
 import 'package:blaze_call/core/app_export.dart';
 import 'package:blaze_call/core/utils/validation_functions.dart';
@@ -172,7 +174,8 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                   if(snapshot.data=="0"){
                                                                     displaymessage.display("lbl_prof_pic_upload_failed".tr);
                                                                   }
-                                                                  else{
+                                                                  else
+                                                                  {
                                                                     // return FutureBuilder(
                                                                     //     future: controller.future4(),
                                                                     //     builder: (BuildContext context,AsyncSnapshot snapshot){
@@ -197,6 +200,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                                               else if(snapshot.data==0){
                                                                                                 displaymessage.display("lbl_username_save_failed".tr);
                                                                                               }
+                                                                                              Get.back();
                                                                                               return Container();
                                                                                             }
                                                                                             else if(snapshot.hasError){
@@ -237,6 +241,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                                     else if(snapshot.data==0){
                                                                                       displaymessage.display("lbl_signup_failed".tr);
                                                                                     }
+                                                                                    Get.back();
                                                                                     return Container();
                                                                                   }
                                                                                   else if (snapshot.hasError){
@@ -310,6 +315,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                         // });
 
                                                                   }
+                                                                  Get.back();
                                                                   return Container();
                                                                 }
                                                                 else if(snapshot.hasError){
@@ -346,6 +352,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                 }
                                                                 return Center(child: CircularProgressIndicator());
                                                               });
+
                                                         }
                                                         else if (snapshot
                                                             .hasError) {
@@ -396,6 +403,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                   //     "Some error occurred!");
                                                   return Container();
                                                 }
+                                                Get.back();
                                                 return Container();
                                               } else if (snapshot.hasError) {
                                                 WidgetsBinding.instance
@@ -426,12 +434,13 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                               }
                                               // return const CircularProgressIndicator();
                                               return Center(
-                                                child:
-                                                    CircularProgressIndicator(),
+                                                child: CircularProgressIndicator(),
                                               );
                                             },
                                           );
-                                        });
+
+                                        }
+                                        );
                                   }
                                   // check=0;
                                 })

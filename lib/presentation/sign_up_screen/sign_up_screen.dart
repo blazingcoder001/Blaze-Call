@@ -508,6 +508,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                       //           child: CircularProgressIndicator());
                                                       //     });
                                                     }
+                                                    Get.back();
                                                     return Container();
                                                   } else
                                                   if (snapshot.hasError) {
