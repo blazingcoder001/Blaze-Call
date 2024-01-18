@@ -534,6 +534,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                         },
                                                       );
                                                     });
+                                                    Get.back();
                                                     return Container();
                                                   }
                                                   // return const CircularProgressIndicator();
@@ -580,6 +581,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                 },
                                               );
                                             });
+                                            Get.back();
                                             return Container();
                                           }
                                           // return const CircularProgressIndicator();

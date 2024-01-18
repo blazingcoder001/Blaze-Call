@@ -197,6 +197,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                                                       },
                                                     );
                                                   });
+                                                  Get.back();
                                                   return Container();
                                                 }
 
@@ -439,6 +440,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                               },
                             );
                           });
+                          Get.back();
                           return Container();
                         }
                         return Center(child: CircularProgressIndicator());
@@ -465,6 +467,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
                       },
                     );
                   });
+                  Get.back();
                   return Container();
                 }
                 return Center(child: CircularProgressIndicator());

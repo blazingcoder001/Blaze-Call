@@ -233,6 +233,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                                                       },
                                                                                                     );
                                                                                                   });
+                                                                                              Get.back();
                                                                                               return Container();
                                                                                             }
                                                                                             return Center( child: CircularProgressIndicator());
@@ -274,6 +275,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                                             },
                                                                                           );
                                                                                         });
+                                                                                    Get.back();
                                                                                     return Container();
                                                                                   }
                                                                                   return Center(child: CircularProgressIndicator());
@@ -348,6 +350,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                                           },
                                                                         );
                                                                       });
+                                                                  Get.back();
                                                                   return Container();
                                                                 }
                                                                 return Center(child: CircularProgressIndicator());
@@ -385,6 +388,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                               },
                                                             );
                                                           });
+                                                          Get.back();
                                                           return Container();
                                                         }
                                                         return Center(child: CircularProgressIndicator(),);
@@ -430,6 +434,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
                                                     },
                                                   );
                                                 });
+                                                Get.back();
                                                 return Container();
                                               }
                                               // return const CircularProgressIndicator();

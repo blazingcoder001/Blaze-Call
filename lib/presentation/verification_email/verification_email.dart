@@ -114,6 +114,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                                                         },
                                                       );
                                                     });
+                                                    Get.back();
                                                     return Container();
                                                   }
                                                   // return const CircularProgressIndicator();
@@ -150,6 +151,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                                                 },
                                               );
                                             });
+                                            Get.back();
                                             return Container();
 
                                           }
@@ -212,6 +214,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                                         },
                                       );
                                     });
+                                    Get.back();
                                     return Container();
 
                                   }
@@ -245,6 +248,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                                   },
                                 );
                               });
+                              Get.back();
                               return Container();
 
                             }
@@ -283,6 +287,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
                         },
                       );
                     });
+                    Get.back();
                     return Container();
 
                   }
