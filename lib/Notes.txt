@@ -29,9 +29,6 @@ of the device from navigating back.
 -> Then finish login module for email and gmail sign in methods.
 -> Create three index Req sent, Req pending and req accepted in the database for each user and update it accordingly.
 
--> If you press back button from verification email window and try to sign in again, the background futures will be called again and again causing errors.
-Especially if the account is deleted in sign in window. In order to avoid this, try adding futures inside getx controller and delete it when pressing back button.
-
 class MyController extends GetxController {
   // Your controller code here.
 }

@@ -1,4 +1,5 @@
 import 'package:blaze_call/core/app_export.dart';
+import 'package:blaze_call/core/utils/authorization.dart';
 import 'package:blaze_call/presentation/friend_list_screen/models/contact_list_model.dart';
 import 'package:blaze_call/presentation/friend_list_screen/models/contactlist_item_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,7 +28,10 @@ class FriendListController extends GetxController {
 
     return requestsRef.snapshots().map((querySnapshot) {
       for (var doc in querySnapshot.docs) {
-        if(searchString != '' && doc.id.contains(searchString)) {
+        Authorization authorization=Authorization();
+        authorization.initializeAuthorization();
+        if(searchString != '' && doc.id.contains(searchString) && doc.data()['UID']!= authorization.uid) {// Added condition to check if the search string is equal
+          //to the account signed in.
           print("searchString: "+searchString);
           x.userName?.value = doc.id;
           x.firstName?.value = doc.data()['First Name'];
