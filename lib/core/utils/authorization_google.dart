@@ -29,4 +29,7 @@ import 'package:google_sign_in/google_sign_in.dart';
       uid = auth.currentUser?.uid;
       return user?.email;
     }
+    else{
+      return "";
+    }
   }

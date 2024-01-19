@@ -26,6 +26,8 @@ class SignUpScreen extends GetWidget<SignUpController> {
   late int usernameCheck;
   late int createAccount;
   late int usernameSave;
+  int  isLoading=0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -231,6 +233,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                 .text),
                                         builder: (BuildContext context,
                                             AsyncSnapshot<int?> snapshot) {
+                                          isLoading=0;
                                           if (snapshot.hasData) {
                                             // print("has");
                                             if (snapshot.data == 1) {
@@ -244,6 +247,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                 builder: (BuildContext context,
                                                     AsyncSnapshot<
                                                         int?> snapshot) {
+                                                  isLoading=0;
                                                   if (snapshot.hasData) {
                                                     if (snapshot.data == 1) {
                                                       WidgetsBinding.instance
@@ -537,6 +541,8 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                                     Get.back();
                                                     return Container();
                                                   }
+                                                  isLoading=1;
+
                                                   // return const CircularProgressIndicator();
                                                   return Center(
                                                     child: CircularProgressIndicator(),
@@ -565,6 +571,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                                               showDialog(
                                                 context: context,
                                                 builder: (BuildContext context) {
+                                                  isLoading=1;
                                                   return AlertDialog(
                                                     title: Text('Error'),
                                                     content: Text('${snapshot
