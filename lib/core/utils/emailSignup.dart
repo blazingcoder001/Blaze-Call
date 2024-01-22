@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get_connect/http/src/request/request.dart';
 
 import 'authorization.dart';
 
@@ -27,7 +28,7 @@ Future<int?> emailSignup(String firstName, String lastName, String email, String
           .collection('users')
           .doc(username)
           .set({'First Name': firstName, 'Last Name':lastName, 'email': email, 'signInMethod': signInMethod,'UID': authorization.uid,
-        'profilePicURL':url}, SetOptions(merge: true))
+        'profilePicURL':url, 'Requests Sent':[], 'Requests Pending': [],'Requests Accepted': [] }, SetOptions(merge: true))
           .then(
               (value) {
             // Debugging: Print when the document is created successfully
