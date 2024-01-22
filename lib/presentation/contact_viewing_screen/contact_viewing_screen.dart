@@ -114,7 +114,14 @@ class ContactViewingScreen extends GetWidget<ContactViewingController> {
                               text: "lbl_send_request".tr,
                               margin: getMargin(top: 24, bottom: 5),
                               padding: ButtonPadding.PaddingAll14,
-                              fontStyle: ButtonFontStyle.GilroyMedium16)
+                              fontStyle: ButtonFontStyle.GilroyMedium16,
+                            onTap: (){
+
+                            },
+
+
+
+                          )
                           // Padding(
                           //     padding: getPadding(top: 76),
                           //     child: Text("lbl_mobile_number".tr,
