@@ -1,3 +1,4 @@
+import 'package:blaze_call/presentation/friend_list_screen/models/contactlist_item_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
@@ -22,13 +23,13 @@ Future<int?> emailSignup(String firstName, String lastName, String email, String
         print('User does not exist from emailSignup');
       }
       int result2;
-
+      List<dynamic> x= [];
       // Create a new document for the user in Firestore
       result2=await FirebaseFirestore.instance
           .collection('users')
           .doc(username)
           .set({'First Name': firstName, 'Last Name':lastName, 'email': email, 'signInMethod': signInMethod,'UID': authorization.uid,
-        'profilePicURL':url, 'Requests Sent':[], 'Requests Pending': [],'Requests Accepted': [] }, SetOptions(merge: true))
+        'profilePicURL':url, 'Requests Sent':x, 'Requests Pending':x,'Requests Accepted':x }, SetOptions(merge: true))
           .then(
               (value) {
             // Debugging: Print when the document is created successfully

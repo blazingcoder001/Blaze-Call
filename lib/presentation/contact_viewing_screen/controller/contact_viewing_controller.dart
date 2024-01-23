@@ -4,6 +4,7 @@ import 'package:blaze_call/presentation/contact_viewing_screen/models/contact_vi
 import 'package:blaze_call/presentation/friend_list_screen/models/contactlist_item_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/utils/getUserName.dart';
 import '../../../core/utils/requestSentReceive.dart';
 
 class ContactViewingController extends GetxController {
@@ -14,11 +15,15 @@ class ContactViewingController extends GetxController {
   Rx<ContactViewingModel> contactSharingModelObj = ContactViewingModel().obs;
 
 
-  Future<List<ContactListItemModel>> future1(ContactListItemModel x){
+
+  Future<String?> future1(){
+    return getUserName();
+  }
+  Future<List<dynamic>> future2(String x){
     return requestSentReceive(x);
   }
-  Future<int> future2(ContactListItemModel x, List<ContactListItemModel> list){
-    return requestSentAdd(x, list);
+  Future<int> future3(String username, ContactListItemModel x, List<dynamic> list){
+    return requestSentAdd(username, x, list);
   }
   @override
   void onReady() {

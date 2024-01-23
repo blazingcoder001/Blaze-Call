@@ -150,5 +150,9 @@ final Map<String, String> enUs = {
   "lbl_verification_timeout":"Verification timed out. Please try again.",
   "lbl_error_create_account":"Error while creating account. Please try again later.",
   "lbl_signup_failed":"Signup failed. Please try again.",
-  "lbl_username_save_failed":"Error saving username."
+  "lbl_username_save_failed":"Error saving username.",
+  "msg_uid_does_not_exist": "This User ID does not exist.",
+  "msg_req_sent_successful": "Requests sent Successfully",
+  "msg_req_sent_error_saving_request":"Error sending Request"
+
 };
