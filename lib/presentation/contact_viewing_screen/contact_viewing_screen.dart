@@ -144,8 +144,6 @@ class ContactViewingScreen extends GetWidget<ContactViewingController> {
                                                   builder: (BuildContext context, AsyncSnapshot snapshot){
                                                     if(snapshot.hasData){
                                                       isLoading=0;
-                                                      // List<ContactListItemModel> contacts = snapshot.data.map((e) => e as ContactListItemModel).toList();
-                                                      print(snapshot.data.toString()!+"uoiiuiuoiuoiuoi");
                                                       return FutureBuilder(
                                                           future: controller.future3(username!, args, snapshot.data),
                                                           builder: (BuildContext context, AsyncSnapshot snapshot){
@@ -153,7 +151,141 @@ class ContactViewingScreen extends GetWidget<ContactViewingController> {
 
                                                             if(snapshot.hasData){
                                                               if(snapshot.data==1){
-                                                                displaymessage.display("msg_req_sent_successful".tr);
+                                                                ContactListItemModel x= ContactListItemModel();
+                                                                x.userName=args.userName;
+                                                                isLoading=0;
+                                                               return FutureBuilder(
+                                                                    future: controller.future4(args.userName!.value),
+                                                                    builder: (BuildContext context, AsyncSnapshot snapshot){
+                                                                      if(snapshot.hasData){
+                                                                        List<dynamic>? list =snapshot.data;
+                                                                        isLoading=0;
+                                                                        return FutureBuilder(
+                                                                              future: controller.future5(username!),
+                                                                              builder: (BuildContext context, AsyncSnapshot snapshot){
+                                                                                if(snapshot.hasData) {
+                                                                                  return FutureBuilder(
+                                                                                      future: controller
+                                                                                          .future6(
+                                                                                          args
+                                                                                              .userName!
+                                                                                              .value,
+                                                                                          snapshot
+                                                                                              .data,
+                                                                                          list!),
+                                                                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                                                                        if(snapshot.hasData){
+
+                                                                                          if(snapshot.data==1){
+                                                                                            displaymessage.display("msg_req_sent_successful".tr);
+                                                                                          }
+                                                                                          else if(snapshot.data==0){
+                                                                                            displaymessage.display("msg_req_sent_error_saving_request".tr);
+                                                                                          }
+
+                                                                                          Get.back();
+                                                                                          return Center(child: CircularProgressIndicator(),);
+                                                                                        }
+                                                                                        else if(snapshot.hasError){
+
+                                                                                          WidgetsBinding.instance
+                                                                                              .addPostFrameCallback((
+                                                                                              _) {
+                                                                                            showDialog(
+                                                                                              context: context,
+                                                                                              builder: (BuildContext context) {
+                                                                                                return AlertDialog(
+                                                                                                  title: Text('Error'),
+                                                                                                  content: Text('${snapshot
+                                                                                                      .error}'),
+                                                                                                  actions: [
+                                                                                                    TextButton(
+                                                                                                      onPressed: () {
+                                                                                                        Navigator.of(context).pop();
+                                                                                                      },
+                                                                                                      child: Text('OK'),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                );
+                                                                                              },
+                                                                                            );
+                                                                                          });
+                                                                                          Get.back();
+                                                                                          return Container();
+                                                                                        }
+                                                                                        isLoading=1;
+                                                                                        return Center(child: CircularProgressIndicator());
+
+                                                                                      });
+                                                                                }
+                                                                                else if(snapshot.hasError){
+
+                                                                                  WidgetsBinding.instance
+                                                                                      .addPostFrameCallback((
+                                                                                      _) {
+                                                                                    showDialog(
+                                                                                      context: context,
+                                                                                      builder: (BuildContext context) {
+                                                                                        return AlertDialog(
+                                                                                          title: Text('Error'),
+                                                                                          content: Text('${snapshot
+                                                                                              .error}'),
+                                                                                          actions: [
+                                                                                            TextButton(
+                                                                                              onPressed: () {
+                                                                                                Navigator.of(context).pop();
+                                                                                              },
+                                                                                              child: Text('OK'),
+                                                                                            ),
+                                                                                          ],
+                                                                                        );
+                                                                                      },
+                                                                                    );
+                                                                                  });
+                                                                                  Get.back();
+                                                                                  return Container();
+                                                                                }
+                                                                                isLoading=1;
+                                                                                return Center(child: CircularProgressIndicator());
+                                                                              });
+
+
+                                                                      }
+                                                                      else if(snapshot.hasError){
+
+                                                                        WidgetsBinding.instance
+                                                                            .addPostFrameCallback((
+                                                                            _) {
+                                                                          showDialog(
+                                                                            context: context,
+                                                                            builder: (BuildContext context) {
+                                                                              return AlertDialog(
+                                                                                title: Text('Error'),
+                                                                                content: Text('${snapshot
+                                                                                    .error}'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () {
+                                                                                      Navigator.of(context).pop();
+                                                                                    },
+                                                                                    child: Text('OK'),
+                                                                                  ),
+                                                                                ],
+                                                                              );
+                                                                            },
+                                                                          );
+                                                                        });
+                                                                        Get.back();
+                                                                        return Container();
+
+                                                                      }
+
+                                                                      isLoading=1;
+                                                                      return Center(child:CircularProgressIndicator());
+
+
+                                                                    });
+
                                                               }
                                                               else if(snapshot.data==0){
                                                                 displaymessage.display("msg_req_sent_error_saving_request".tr);
@@ -191,6 +323,7 @@ class ContactViewingScreen extends GetWidget<ContactViewingController> {
                                                             return Center(child: CircularProgressIndicator(),);
 
                                                           });
+
 
                                                     }
                                                     else if(snapshot.hasError){
