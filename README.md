@@ -95,3 +95,8 @@ Resolve the errors and warnings that are shown in the application.
 ### Support
 
 If you have any problems or questions, go to our Discord channel, where we will help you as quickly as possible: https://discord.com/invite/rFMnCG5MZ7
+
+
+Ongoing work:-
+Testing signup_screen_google.dart. Whenever google user sign up, the profile pic id is stored in firebase instead of email under email field.
+This is because of saving snapshot.context for email field. snapshot.context gives the profile pic Id of the previous future builder. Therefore the error.

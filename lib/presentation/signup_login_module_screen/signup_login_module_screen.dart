@@ -352,55 +352,6 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
   }
 
   onTapSigninwithgoogle() async {
-    // await GoogleAuthHelper().googleSignInProcess().then((googleUser) {
-    //   if (googleUser != null) {
-    //     //TODO Actions to be performed after signin
-    //     // print("lkllkllklkl");
-    //     Authorization authorization = Authorization();
-    //     authorization.initializeAuthorization();
-    //     return FutureBuilder(
-    //         future: controller.future2(authorization.uid),
-    //         builder: (BuildContext context, AsyncSnapshot snapshot) {
-    //           if (snapshot.hasData) {
-    //             if (snapshot.data == 1) {
-    //               WidgetsBinding.instance.addPostFrameCallback((_) {
-    //                 Get.toNamed(AppRoutes.contactListScreen);
-    //               });
-    //             }
-    //             else{
-    //               Get.toNamed(AppRoutes.signUpScreen);
-    //             }
-    //             return Container();
-    //           } else if (snapshot.hasError) {
-    //             WidgetsBinding.instance.addPostFrameCallback((_) {
-    //               showDialog(
-    //                 context: context,
-    //                 builder: (BuildContext context) {
-    //                   return AlertDialog(
-    //                     title: Text('Error'),
-    //                     content: Text('${snapshot.error}'),
-    //                     actions: [
-    //                       TextButton(
-    //                         onPressed: () {
-    //                           Navigator.of(context).pop();
-    //                         },
-    //                         child: Text('OK'),
-    //                       ),
-    //                     ],
-    //                   );
-    //                 },
-    //               );
-    //             });
-    //             return Container();
-    //           }
-    //           return Center(child: CircularProgressIndicator());
-    //         });
-    //   } else {
-    //     Get.snackbar('Error', 'msg_snack-bar_error_1'.tr);
-    //   }
-    // }).catchError((onError) {
-    //   Get.snackbar('Error', onError.toString());
-    // });
     showDialog(context: Get.context!,
         barrierColor: null,
         barrierDismissible: false,

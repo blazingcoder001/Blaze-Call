@@ -8,6 +8,7 @@ import 'package:blaze_call/core/utils/authorization_google.dart';
 import 'package:blaze_call/core/utils/checkUserId.dart';
 import 'package:blaze_call/core/utils/deleteUser.dart';
 import 'package:blaze_call/core/utils/emailSignInOnly.dart';
+import 'package:blaze_call/core/utils/get_google_email.dart';
 import 'package:blaze_call/presentation/sign_up_screen/models/sign_up_model.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,7 @@ class SignUpControllerGoogle extends GetxController {
     return picUpload(pic);
   }
   Future<String?> future4(){
-    return getAuthorizationGoogle();
+    return getGoogleEmail();
   }
   Future<int?> future5(firstName, lastName, email, username, url, signInMethod){
     return emailSignup(firstName, lastName, email, username, url, signInMethod);
