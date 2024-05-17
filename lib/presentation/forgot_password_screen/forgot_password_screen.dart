@@ -14,6 +14,7 @@ class ForgotPasswordScreen extends GetWidget<ForgotPasswordController> {
 
   @override
   Widget build(BuildContext context) {
+    print("forgot_password_screen.dart called");
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,

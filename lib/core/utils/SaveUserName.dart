@@ -4,6 +4,7 @@ import 'package:blaze_call/core/utils/authorization.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<int> saveUserName(String username, String signInMethod) async {
+  print("SaveUserName.dart called");
   Authorization authorization=Authorization();
   authorization.initializeAuthorization();
   int result= await FirebaseFirestore.instance

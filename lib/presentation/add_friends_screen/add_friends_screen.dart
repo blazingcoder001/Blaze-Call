@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 class AddFriendsScreen extends GetWidget<AddFriendsController> {
   @override
   Widget build(BuildContext context) {
+    print("add_friends_screen.dart called");
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,

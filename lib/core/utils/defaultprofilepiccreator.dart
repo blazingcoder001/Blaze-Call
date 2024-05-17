@@ -5,6 +5,7 @@ import 'dart:ui' as ui;
 
 
   Future<ByteData?> createPic(String initial) async {
+    print("defaultprofilepiccreator.dart called");
     // Create a new image with a white background.
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);

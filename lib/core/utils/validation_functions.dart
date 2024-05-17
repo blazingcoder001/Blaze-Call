@@ -1,8 +1,11 @@
 /// Checks if string consist only Alphabet. (No Whitespace)
+
 bool isText(
   String? inputString, {
   bool isRequired = false,
 }) {
+  print("validation_functions.dart called");
+
   bool isInputStringValid = false;
 
   if (!isRequired && (inputString == null ? true : inputString.isEmpty)) {
@@ -25,6 +28,8 @@ bool isValidEmail(
   String? inputString, {
   bool isRequired = false,
 }) {
+  print("validation_functions.dart called");
+
   bool isInputStringValid = false;
 
   if (!isRequired && (inputString == null ? true : inputString.isEmpty)) {
@@ -48,6 +53,8 @@ bool isNumeric(
   String? inputString, {
   bool isRequired = false,
 }) {
+  print("validation_functions.dart called");
+
   bool isInputStringValid = false;
 
   if (!isRequired && (inputString == null ? true : inputString.isEmpty)) {
@@ -70,6 +77,8 @@ bool isValidPhone(
   String? inputString, {
   bool isRequired = false,
 }) {
+  print("validation_functions.dart called");
+
   bool isInputStringValid = false;
 
   if (!isRequired && (inputString == null ? true : inputString.isEmpty)) {
@@ -100,6 +109,8 @@ bool isValidPassword(
   String? inputString, {
   bool isRequired = false,
 }) {
+  print("validation_functions.dart called");
+
   bool isInputStringValid = false;
 
   if (!isRequired && (inputString == null ? true : inputString.isEmpty)) {

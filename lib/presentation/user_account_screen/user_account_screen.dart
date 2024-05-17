@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 class UserAccountScreen extends GetWidget<UserAccountController> {
   @override
   Widget build(BuildContext context) {
+    print("user_account_screen.dart called");
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,

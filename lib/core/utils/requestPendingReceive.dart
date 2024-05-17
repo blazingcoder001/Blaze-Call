@@ -4,6 +4,7 @@ import 'package:blaze_call/core/utils/authorization.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<List<dynamic>?> requestPendingReceive(String username) async {
+  print("requestPendingReceive.dart called");
   Authorization authorization=Authorization();
   authorization.initializeAuthorization();
   List<dynamic>? result= await FirebaseFirestore.instance

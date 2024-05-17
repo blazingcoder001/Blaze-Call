@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 class VideoManagementScreen extends GetWidget<VideoManagementController> {
   @override
   Widget build(BuildContext context) {
+    print("video_management_screen.dart called");
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,

@@ -5,6 +5,7 @@ import 'package:blaze_call/presentation/friend_list_screen/models/contactlist_it
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<ContactListItemModel?> receiveFromDatabase(String username) async {
+  print("receiveUserDataFromDatabase.dart called");
   ContactListItemModel x= ContactListItemModel();
   Authorization authorization=Authorization();
   authorization.initializeAuthorization();

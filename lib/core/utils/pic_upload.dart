@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
 
 Future<String> picUpload(ByteData byteData) async {
+  print("pic_upload.dart called");
   final bytes = byteData.buffer.asUint8List();
   final storageRef = FirebaseStorage.instance.ref().child('images/images/${DateTime.now().millisecondsSinceEpoch}.png');
   final uploadTask = storageRef.putData(bytes);

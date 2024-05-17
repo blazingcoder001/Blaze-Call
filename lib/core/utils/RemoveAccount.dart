@@ -2,6 +2,7 @@
 import 'authorization.dart';
 
 Future<int?> removeAccount() async {
+  print("RemoveAccount.dart called");
   Authorization authorization=Authorization();
   authorization.initializeAuthorization();
   int? result= await authorization.user?.delete().then((value){

@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 Future<String?> getUserName() async {
+  print("getUserName.dart called");
   Authorization authorization=Authorization();
   authorization.initializeAuthorization();
   String? result= await FirebaseFirestore.instance

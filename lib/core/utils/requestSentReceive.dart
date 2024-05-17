@@ -5,6 +5,7 @@ import 'package:blaze_call/presentation/friend_list_screen/models/contactlist_it
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<List<dynamic>> requestSentReceive(String passed) async {
+  print("requestSentReceive.dart called");
   Authorization authorization=Authorization();
   authorization.initializeAuthorization();
   List<dynamic> result= await FirebaseFirestore.instance

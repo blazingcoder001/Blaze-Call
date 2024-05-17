@@ -21,6 +21,7 @@ class SignUpScreenGoogle extends GetWidget<SignUpControllerGoogle> {
 
   @override
   Widget build(BuildContext context) {
+    print("signup_screen_google.dart called");
     int check = 0;
     return SafeArea(
         child: Scaffold(

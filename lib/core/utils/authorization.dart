@@ -4,7 +4,8 @@ class Authorization {
    User? user;
    String? uid;
    initializeAuthorization(){
-    user = auth.currentUser;
+     print("authorization.dart called");
+     user = auth.currentUser;
     uid = user?.uid;
   }
 }

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 class PreviewVideoScreen extends GetWidget<PreviewVideoController> {
   @override
   Widget build(BuildContext context) {
+    print("preview_video_screen.dart called");
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,

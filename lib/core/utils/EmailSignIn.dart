@@ -10,6 +10,7 @@ import '../../presentation/DisplayMessagesSnackBar/LinkSentEmail.dart';
 import 'authorization.dart';
 
 Future<int?>emailSignIn(String email, String password) async {
+  print("EmailSignIn.dart called");
   DisplayMessage displayMessage=DisplayMessage();
   try {
     Authorization authorization =Authorization();

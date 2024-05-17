@@ -4,6 +4,7 @@ import 'package:flutter/scheduler.dart';
 
 class DisplayMessage{
   void display(String message){
+    print("DisplayMessage.dart called");
     // if (Get.context!.mounted) {
     //   SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
     //     ScaffoldMessenger.of(Get.context!).showSnackBar(

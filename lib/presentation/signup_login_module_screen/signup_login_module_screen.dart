@@ -18,6 +18,7 @@ class SignupLoginModuleScreen extends GetWidget<SignupLoginModuleController> {
   int isLoading=0;
   @override
   Widget build(BuildContext context) {
+    print("signup_login_module_screen.dart called");
     return SafeArea(
         child: WillPopScope(
           onWillPop: () async{

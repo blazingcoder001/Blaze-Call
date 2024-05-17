@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 class FriendListScreen extends GetWidget<FriendListController> {
   @override
   Widget build(BuildContext context) {
+    print("contact_list_screen.dart called");
     Authorization authorization=Authorization();
     authorization.initializeAuthorization();
     return SafeArea(

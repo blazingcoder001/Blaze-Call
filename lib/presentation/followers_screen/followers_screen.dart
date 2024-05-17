@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 class FollowersScreen extends GetWidget<FollowersController> {
   @override
   Widget build(BuildContext context) {
+    print("followers_screen.dart called");
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,

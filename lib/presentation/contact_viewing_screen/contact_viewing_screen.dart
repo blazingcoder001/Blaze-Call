@@ -18,6 +18,7 @@ class ContactViewingScreen extends GetWidget<ContactViewingController> {
   int isLoading=0;
   @override
   Widget build(BuildContext context) {
+    print("contact_viewing_screen.dart called");
     return SafeArea(
         child: WillPopScope(
             onWillPop: () async{

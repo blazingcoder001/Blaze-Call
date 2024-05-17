@@ -18,6 +18,7 @@ class VerificationEmail extends GetWidget<VerificationEmailController> {
   List<String> args= Get.arguments;
   @override
   Widget build(BuildContext context) {
+    print("verification_email.dart called");
     DisplayMessage displayMessage=DisplayMessage();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showDialog(

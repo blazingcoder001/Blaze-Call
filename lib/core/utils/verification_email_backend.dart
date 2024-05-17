@@ -4,6 +4,7 @@ import 'package:blaze_call/core/utils/authorization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 Future<int?> verificationEmailBackend() async {
+  print("verification_email_backend.dart called");
   int? k = 0;
   Authorization authorization = Authorization();
   authorization.initializeAuthorization();

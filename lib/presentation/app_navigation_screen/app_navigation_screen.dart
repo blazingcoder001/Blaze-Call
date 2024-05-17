@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class AppNavigationScreen extends GetWidget<AppNavigationController> {
   @override
   Widget build(BuildContext context) {
+    print("app_navigation_screen.dart called");
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.whiteA700,

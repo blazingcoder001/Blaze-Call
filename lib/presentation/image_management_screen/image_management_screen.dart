@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 class ImageManagementScreen extends GetWidget<ImageManagementController> {
   @override
   Widget build(BuildContext context) {
+    print("image_management_Screen.dart called");
+
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,

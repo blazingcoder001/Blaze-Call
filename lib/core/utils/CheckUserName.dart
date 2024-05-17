@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 Future<int?> checkUserName(String username) async {
+  print("CheckUserName.dart called");
   print("username"+username);
   int? result= await FirebaseFirestore.instance
       .collection('users')

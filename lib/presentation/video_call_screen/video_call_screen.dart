@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 class VideoCallScreen extends GetWidget<VideoCallController> {
   @override
   Widget build(BuildContext context) {
+    print("video_call_screen.dart called");
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,

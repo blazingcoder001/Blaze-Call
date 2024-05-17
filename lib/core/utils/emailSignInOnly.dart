@@ -4,6 +4,7 @@ import 'package:blaze_call/presentation/DisplayMessagesSnackBar/DisplayMessage.d
 import 'package:firebase_auth/firebase_auth.dart';
 
 Future<int?>emailSignInOnly(String email, String password) async {
+  print("emailSignInOnly.dart called");
   Authorization authorization=Authorization();
   authorization.initializeAuthorization();
   DisplayMessage displayMessage=DisplayMessage();

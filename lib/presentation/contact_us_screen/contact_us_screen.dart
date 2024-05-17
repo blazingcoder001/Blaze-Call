@@ -14,6 +14,8 @@ class ContactUsScreen extends GetWidget<ContactUsController> {
 
   @override
   Widget build(BuildContext context) {
+    print("contact_screen.dart called");
+
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,

@@ -6,6 +6,7 @@ import 'package:blaze_call/presentation/friend_list_screen/models/contactlist_it
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<int> requestSentAdd(String username, ContactListItemModel passed, List<dynamic> receivedFromServer) async {
+  print("requestSentAdd.dart called");
   Authorization authorization=Authorization();
   authorization.initializeAuthorization();
   // List<ContactListItemModel> contacts = receivedFromServer.map((e) => e as ContactListItemModel).toList();

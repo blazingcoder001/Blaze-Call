@@ -6,7 +6,7 @@ import 'package:get/get_connect/http/src/request/request.dart';
 import 'authorization.dart';
 
 Future<int?> emailSignup(String firstName, String lastName, String email, String username, String url, signInMethod) async {
-
+  print("emailSignup.dart called");
   int? result;
   Authorization authorization =Authorization();
   authorization.initializeAuthorization();

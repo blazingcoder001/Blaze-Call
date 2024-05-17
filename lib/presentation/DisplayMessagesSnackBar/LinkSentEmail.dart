@@ -5,6 +5,7 @@ import '../../core/utils/authorization.dart';
 class LinkSentEmail{
   Authorization authorization=Authorization();
   int display(){
+    print("LinkSentEmail.dart called");
     authorization.initializeAuthorization();
     if (!authorization.user!.emailVerified) {
       DisplayMessage displayMessage=DisplayMessage();

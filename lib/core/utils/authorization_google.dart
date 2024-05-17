@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
   Future<String?> getAuthorizationGoogle() async {
+    print("authorization_google.dart called");
+
     FirebaseAuth auth=FirebaseAuth.instance;
     User? user;
     String? uid,email;

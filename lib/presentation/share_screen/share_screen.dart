@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 class ShareScreen extends GetWidget<ShareController> {
   @override
   Widget build(BuildContext context) {
+    print("share_screen.dart called");
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,

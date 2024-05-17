@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 class ActivityFeedScreen extends GetWidget<ActivityFeedController> {
   @override
   Widget build(BuildContext context) {
+    print("activity_feed_screen.dart called");
     return SafeArea(
         child: Scaffold(
             backgroundColor: ColorConstant.gray50,
